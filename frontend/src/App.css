@@ -1,0 +1,646 @@
+/* General Reset and Body Styles */
+body, html, #root {
+	height: 100%;
+	margin: 0;
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+		'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+		sans-serif; /* Standard system fonts */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	background-color: #f0f2f5; /* A neutral background */
+	display: flex; /* Use flex to center the container */
+	justify-content: center;
+	align-items: center;
+	padding: 20px; /* Add some padding around the container */
+	box-sizing: border-box;
+}
+
+/* Chatbot Container - Styles moved from inline */
+.chatbot-container {
+	display: flex;
+	width: 90vw; /* Example width, adjust as needed */
+	height: 90vh; /* Example height, adjust as needed */
+	max-width: 1400px; /* Max width based on visual */
+	max-height: 900px; /* Max height based on visual */
+	background-size: cover;
+	background-position: center;
+	border-radius: 34px; /* From Figma node 1:1703 */
+	box-shadow: 0px 119.4px 120.55px -52.3px rgba(1, 13, 32, 0.1); /* From Figma effect_FEXV5T */
+	overflow: hidden; /* Ensure content stays within rounded corners */
+	margin: auto; /* Center the container */
+}
+
+/* AIVA Chatbot Styles */
+.aiva-chatbot-container {
+  display: flex;
+  width: 90vw;
+  height: 90vh;
+  max-width: 1400px;
+  max-height: 900px;
+  background-color: #FAF1E4; /* Từ Figma fill_CJ6OGY */
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.08);
+  margin: auto;
+  font-family: 'Plus Jakarta Sans', 'Poppins', sans-serif;
+}
+
+/* Left Sidebar */
+.aiva-sidebar {
+  width: 280px;
+  background-color: #435334; /* Từ Figma fill_RG2JDH */
+  color: white;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  position: relative;
+}
+
+.aiva-logo {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 26px;
+  color: white;
+  text-align: center;
+  padding: 20px 0;
+}
+
+.aiva-separator {
+  height: 1px;
+  background-color: #39462C; /* Từ Figma stroke_45YJMU */
+  margin: 0 10px;
+}
+
+.aiva-new-chat {
+  padding: 15px;
+}
+
+.aiva-new-chat-button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 12px;
+  background-color: #39462C; /* Từ Figma fill_DWQ478 */
+  color: white;
+  border: none;
+  border-radius: 40px;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  text-align: left;
+}
+
+.aiva-add-icon {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 22px;
+  font-weight: bold;
+  line-height: 1;
+  width: 24px;
+  height: 24px;
+}
+
+.aiva-chat-history-section {
+  flex-grow: 1;
+  overflow-y: auto;
+  padding: 5px 15px;
+}
+
+.aiva-history-label {
+  font-family: 'Poppins', sans-serif;
+  text-transform: uppercase;
+  font-size: 13px;
+  color: #9EB384; /* Từ Figma fill_KELRBE */
+  margin: 15px 0 8px;
+}
+
+.aiva-chat-history-item {
+  padding: 10px 15px;
+  margin: 5px 0;
+  border-radius: 5px;
+  cursor: pointer;
+  position: relative;
+  font-family: 'Poppins', sans-serif;
+  font-size: 15px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.aiva-chat-history-item.active::before {
+  content: '';
+  position: absolute;
+  left: -15px;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background-color: white;
+  border-radius: 0 10px 10px 0;
+}
+
+.aiva-chat-history-item:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.aiva-sidebar-footer {
+  padding: 15px;
+  margin-top: auto;
+}
+
+.aiva-model-selector {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  background-color: white;
+  border: 1px solid #CEDEBD; /* From Figma stroke_LS9I6K */
+  border-radius: 40px;
+  cursor: pointer;
+}
+
+.aiva-model-active {
+  background-color: #CEDEBD; /* From Figma fill_C323ZI */
+  color: #39462C;
+  padding: 15px 30px;
+  border-radius: 40px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  font-size: 13px;
+}
+
+.aiva-model-option {
+  padding: 15px 30px;
+  color: #435334;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  font-size: 13px;
+}
+
+.aiva-logout-button {
+  width: 100%;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.2s;
+}
+
+.aiva-logout-button:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Main Chat Area */
+.aiva-main {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  background-color: #FAF1E4; /* From Figma fill_CJ6OGY */
+  overflow: hidden;
+}
+
+.aiva-header {
+  padding: 15px 0;
+  background-color: white;
+  border-bottom: 1px solid #e0e0e0;
+  text-align: center;
+}
+
+.aiva-header-title {
+  font-weight: 600;
+  font-size: 18px;
+  color: #435334;
+}
+
+.aiva-chat-messages {
+  flex-grow: 1;
+  overflow-y: auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.aiva-empty-chat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-align: center;
+  padding: 20px;
+}
+
+.aiva-avatar {
+  width: 45px;
+  height: 45px;
+  background-color: #CEDEBD; /* From Figma fill_C323ZI */
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 20px;
+  color: #39462C;
+  margin-bottom: 15px;
+}
+
+.aiva-empty-chat h2 {
+  margin: 0;
+  color: #435334;
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.aiva-empty-chat p {
+  margin: 0;
+  color: #849771; /* Từ Figma fill_WCKL50 */
+  font-size: 16px;
+  margin-bottom: 30px;
+}
+
+.aiva-suggestions {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  width: 100%;
+  max-width: 800px;
+}
+
+.aiva-suggestion-card {
+  border: 1px solid #BA9359; /* From Figma stroke_RQP1UR */
+  border-radius: 10px;
+  padding: 16px 20px;
+  cursor: pointer;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.aiva-suggestion-card strong {
+  color: #435334;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.aiva-suggestion-card span {
+  color: #849771; /* From Figma fill_WCKL50 */
+  font-size: 12px;
+}
+
+.aiva-question-card {
+  background-color: #FFEED6; /* From Figma fill_NRPFIL */
+  border: 1px solid #D6BC97; /* From Figma stroke_38AI20 */
+  border-radius: 14px;
+  padding: 20px;
+  align-self: flex-start;
+  max-width: 90%;
+}
+
+.aiva-question-text {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  color: #2D2D2D; /* From Figma fill_GZN7AJ */
+}
+
+.aiva-message {
+  display: flex;
+  align-items: flex-start;
+  max-width: 80%;
+}
+
+.aiva-message.user {
+  margin-left: auto;
+  flex-direction: row-reverse;
+}
+
+.aiva-message.bot {
+  margin-right: auto;
+}
+
+.aiva-bot-avatar {
+  width: 38px;
+  height: 38px;
+  background-color: #CEDEBD;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 18px;
+  color: #39462C;
+  margin: 0 10px;
+  flex-shrink: 0;
+}
+
+.aiva-message-content {
+  background-color: #FFEED6; /* From Figma fill_NRPFIL */
+  border-radius: 18px;
+  padding: 15px 20px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.7;
+  color: #1B2559; /* From Figma fill_CFYP4O */
+  white-space: pre-line;
+}
+
+.aiva-message.user .aiva-message-content {
+  background-color: #435334; /* From Figma fill_RG2JDH */
+  color: white;
+  border-bottom-right-radius: 5px;
+}
+
+.aiva-loading {
+  background-color: #FFEED6;
+  border-radius: 18px;
+  padding: 15px 20px;
+  font-style: italic;
+  color: #6E7191;
+}
+
+.aiva-response-actions {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-top: 5px;
+}
+
+.aiva-action-button {
+  background-color: #435334; /* From Figma fill_RG2JDH */
+  color: white;
+  border: none;
+  border-radius: 45px;
+  padding: 0 30px;
+  height: 54px;
+  cursor: pointer;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.aiva-action-button:hover {
+  background-color: #394628;
+}
+
+.aiva-input-area {
+  display: flex;
+  padding: 15px 20px;
+  background-color: white;
+  border-top: 1px solid #e0e0e0;
+  gap: 15px;
+}
+
+.aiva-input-field {
+  flex-grow: 1;
+  height: 50px;
+  background-color: #FFEED6; /* From Figma fill_NRPFIL */
+  border: 1px solid #D6BC97; /* From Figma stroke_38AI20 */
+  border-radius: 5px;
+  padding: 0 15px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  color: #435334;
+}
+
+.aiva-input-field::placeholder {
+  color: #BA9359; /* From Figma fill_7GGI6W */
+}
+
+.aiva-send-button {
+  width: 50px;
+  height: 50px;
+  background-color: #435334;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.aiva-send-button:hover {
+  background-color: #394628;
+}
+
+.aiva-send-button:disabled {
+  background-color: #a5b396;
+  cursor: not-allowed;
+}
+
+/* Sidebar Styles */
+.sidebar {
+  width: 280px; /* Slightly wider sidebar */
+  background-color: rgba(26, 29, 33, 0.9); /* Dark, slightly transparent */
+  backdrop-filter: blur(5px); /* Blur effect for sidebar background */
+  color: #e0e0e0;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  box-sizing: border-box;
+  border-right: 1px solid rgba(255, 255, 255, 0.1); /* Lighter border */
+}
+
+.new-chat-button {
+  background-color: #5661F6; /* Button color from Figma */
+  color: white;
+  border: none;
+  padding: 12px 18px; /* Slightly larger padding */
+  border-radius: 8px; /* More rounded corners */
+  cursor: pointer;
+  margin-bottom: 25px;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Increased gap */
+  font-size: 1rem;
+  font-weight: 500;
+  transition: background-color 0.2s ease; /* Smooth transition */
+}
+
+.new-chat-button:hover {
+  background-color: #454fcc;
+}
+
+.chat-history {
+  flex-grow: 1;
+  overflow-y: auto;
+  margin-bottom: 20px;
+  /* Custom scrollbar (optional) */
+  scrollbar-width: thin;
+  scrollbar-color: #555 #333;
+}
+
+.chat-history::-webkit-scrollbar {
+  width: 6px;
+}
+
+.chat-history::-webkit-scrollbar-track {
+  background: #333;
+}
+
+.chat-history::-webkit-scrollbar-thumb {
+  background-color: #555;
+  border-radius: 3px;
+}
+
+.chat-history p { /* Placeholder style */
+  padding: 8px 12px;
+  margin-bottom: 8px;
+  border-radius: 4px;
+  background-color: rgba(255, 255, 255, 0.05);
+  font-size: 0.9rem;
+}
+
+.sidebar-footer {
+  margin-top: auto;
+  padding-top: 15px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.logout-button {
+  width: 100%;
+  padding: 10px;
+  background-color: transparent; /* Make transparent */
+  color: #ff4d4d; /* Red text color */
+  border: 1px solid #ff4d4d; /* Red border */
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.logout-button:disabled {
+  color: #6c757d;
+  border-color: #6c757d;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.logout-button:hover:not(:disabled) {
+  background-color: rgba(255, 77, 77, 0.1); /* Slight red background on hover */
+  color: #ff6b6b;
+}
+
+/* Main Chat Area Styles */
+.main-chat-area {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(255, 255, 255, 0.8); /* Slightly transparent white */
+  backdrop-filter: blur(5px); /* Blur effect */
+}
+
+.chat-messages {
+  flex-grow: 1;
+  overflow-y: auto;
+  padding: 30px; /* More padding */
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Increased space between messages */
+}
+
+.empty-chat-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: #666; /* Darker grey */
+  text-align: center;
+}
+
+.empty-chat-placeholder h2 {
+  margin-bottom: 15px;
+  font-size: 1.8rem; /* Larger heading */
+  font-weight: 300; /* Lighter font weight */
+  color: #444;
+}
+
+.empty-chat-placeholder p {
+  color: #999; /* Lighter placeholder text */
+}
+
+.message {
+  padding: 12px 18px; /* More padding */
+  border-radius: 18px; /* More rounded messages */
+  max-width: 75%;
+  word-wrap: break-word;
+  line-height: 1.5;
+  font-size: 0.95rem;
+}
+
+.message.user {
+  background-color: #5661F6; /* Use button color for user messages */
+  color: white;
+  align-self: flex-end;
+  border-bottom-right-radius: 6px; /* Slightly different corner */
+}
+
+.message.bot {
+  background-color: #e9ecef;
+  color: #343a40;
+  align-self: flex-start;
+  border-bottom-left-radius: 6px; /* Slightly different corner */
+}
+
+.chat-input-area {
+  display: flex;
+  padding: 20px 30px; /* More padding */
+  border-top: 1px solid #e0e0e0; /* Lighter separator */
+  background-color: rgba(248, 249, 250, 0.9); /* Slightly transparent input area */
+  backdrop-filter: blur(3px);
+}
+
+.chat-input-area input {
+  flex-grow: 1;
+  padding: 12px 20px; /* More padding */
+  border: 1px solid #d0d0d0;
+  border-radius: 25px; /* Fully rounded */
+  margin-right: 15px;
+  font-size: 1rem;
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+.chat-input-area input:focus {
+  outline: none;
+  border-color: #5661F6;
+  box-shadow: 0 0 0 2px rgba(86, 97, 246, 0.2);
+}
+
+.chat-input-area button {
+  /* padding: 0 15px; /* Remove padding for circular button */
+  background-color: #5661F6;
+  color: white;
+  border: none;
+  border-radius: 50%; /* Make it circular */
+  cursor: pointer;
+  width: 48px; /* Fixed size */
+  height: 48px; /* Fixed size */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease;
+}
+
+.chat-input-area button:hover {
+  background-color: #454fcc;
+}
+
+.chat-input-area button svg {
+  width: 22px; /* Adjust icon size */
+  height: 22px;
+}
