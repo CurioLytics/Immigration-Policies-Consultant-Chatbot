@@ -1,0 +1,51 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:17-alpine3.20
+    container_name: Immigration_chatbot_db
+    environment:
+      - POSTGRES_DB=Immigration_chatbot_db
+      - POSTGRES_PASSWORD=1234
+      - POSTGRES_USER=postgres
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432" # Exposes PostgreSQL to the host on port 5432
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: immigration_chatbot_backend
+    ports:
+      - "5000:5000" # Maps container port 5000 to host port 5000
+    env_file:
+      - ./backend/.env # Loads environment variables from .env file
+    environment:
+      - RUNNING_IN_DOCKER=true
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: immigration_chatbot_frontend
+    ports:
+      - "3000:80" # Maps Nginx's port 80 in container to host port 3000
+    depends_on:
+      - backend # Ensures backend is started, though frontend might need to handle API availability
+    restart: unless-stopped
+
+volumes:
+  postgres_data: # Named volume for PostgreSQL data persistence
+    driver: local

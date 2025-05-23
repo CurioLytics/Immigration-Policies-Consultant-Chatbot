@@ -1,0 +1,220 @@
+.text-input-field-container-figma {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch; /* Để textarea và actions-row có thể chiếm toàn bộ chiều rộng */
+  gap: 12px; /* Giảm khoảng cách một chút giữa textarea và actions-row */
+  position: relative;
+  padding: 24px;
+  border: 2px solid #7C8FBE;
+  border-radius: 32px;
+  background-color: #EDF2FB;
+  width: 65%; 
+  box-sizing: border-box;
+}
+
+/* Trạng thái disabled cho toàn bộ container */
+.text-input-field-container-figma.disabled {
+  opacity: 0.7;
+  border-color: #B0B0C0;
+  pointer-events: none;
+}
+
+/* Áp dụng chiều rộng 90% cho trang chủ */
+.text-input-field-container-figma.home-variant-input-container {
+  width: 90%;
+}
+
+/* Lớp này không còn cần thiết vì width được xử lý trực tiếp trên container chính với home-variant-input-container */
+/* .home-variant-input-container { */
+  /* width: 90%; */ 
+/* } */
+
+.text-input-field-figma { /* Textarea */
+  width: 100%; /* Chiếm toàn bộ chiều rộng của container cha */
+  border: none;
+  outline: none;
+  padding: 0;
+  margin: 0;
+  background-color: transparent;
+  resize: none;
+  font-size: 16px;
+  line-height: 1.4;
+  color: #0F172B;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #1E46A4 #f0f0f0;
+}
+
+.text-input-field-figma::-webkit-scrollbar {
+  width: 10px; 
+}
+
+.text-input-field-figma::-webkit-scrollbar-track {
+  background: #f0f0f0; 
+  border-radius: 4px;
+}
+
+.text-input-field-figma::-webkit-scrollbar-thumb {
+  background-color: #1E46A4; 
+  border-radius: 4px;
+  border: 2px solid #f0f0f0; 
+}
+
+.text-input-field-figma::-webkit-scrollbar-thumb:hover {
+  background-color: #16357C; 
+}
+
+.text-input-field-figma::placeholder {
+  color: #9CA3AF;
+}
+
+.actions-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center; /* Căn giữa các nút theo chiều dọc */
+  justify-content: space-between; /* Đẩy nút gửi sang phải */
+  gap: 12px; /* Khoảng cách giữa nút thêm tệp và nút gửi (vẫn hữu ích nếu có nhiều hơn 2 nút) */
+  width: 100%;
+}
+
+.add-file-button-style {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.add-file-icon-svg {
+  width: 24px;
+  height: 24px;
+}
+
+.send-message-button {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.send-icon-svg {
+  width: 24px;
+  height: 24px;
+}
+
+/* File Upload Options Box - Updated according to Figma design */
+.file-upload-options {
+  position: absolute;
+  top: calc(100% + 8px); 
+  left: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 8px;
+  gap: 4px;
+  width: 215px;
+  height: auto;
+  background: #EDF2FB;
+  border: 2px solid #7C8FBE;
+  border-radius: 16px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.08);
+  z-index: 10;
+  box-sizing: border-box;
+}
+
+/* Chatbot context - above input */
+.file-upload-options.chatbot {
+  bottom: calc(100% + 8px);
+  top: auto;
+  left: 24px;
+}
+
+.file-upload-option-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 8px 12px;
+  gap: 12px;
+  width: 100%;
+  min-height: 40px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+  box-sizing: border-box;
+}
+
+.file-upload-option-item:hover {
+  background-color: rgba(124, 143, 190, 0.2); /* Màu hover nhẹ nhàng */
+}
+
+/* Separator between items */
+.file-upload-option-item:not(:last-child) {
+  border-bottom: 1px solid #E5E7EB;
+  margin-bottom: 4px;
+  padding-bottom: 12px;
+}
+
+/* Container cho icon trong menu item */
+.upload-option-icon-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+
+.file-upload-option-item .upload-option-icon.shape {
+  width: 16px; 
+  height: 20px; 
+  fill: #0F172B; 
+}
+
+.file-upload-option-item .upload-option-icon.vector {
+  width: 7px;
+  height: 7px;
+  fill: #0F172B;
+  position: absolute;
+  top: auto;
+  left: 57%;
+  bottom: 1px;
+  right: 0px;
+  transform: none;
+}
+
+.file-upload-option-item .upload-option-icon.blank {
+  width: 16px;
+  height: 20px;
+  fill: #0F172B;
+}
+
+.file-upload-option-item span {
+  color: #0F172B;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 19px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Style cho các button khi disabled */
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* Style cho textarea khi disabled */
+.text-input-field-figma:disabled {
+  background-color: #F5F7FA;
+  color: #8F9BB3;
+}

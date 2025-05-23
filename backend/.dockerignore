@@ -1,0 +1,13 @@
+# Ignore all files by default
+**
+
+# Except these
+!*
+
+# Ignore specific files and directories
+.env
+instance/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd

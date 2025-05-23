@@ -1,0 +1,409 @@
+/* General Page Styles */
+.landing-page {
+    background-color: #EDF2FB; /* fill_J9PMTT */
+    font-family: 'Inter', sans-serif;
+    color: #0F172B; /* fill_UUMNVV */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-x: hidden; /* Prevent horizontal scroll from absolutely positioned elements */
+}
+
+/* Top Bar Styles */
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 36px;
+    background-color: #E2EAFC; /* fill_TUUPNU */
+    border-radius: 88px;
+    width: 1191px; /* dimensions.width from layout_XLNEJQ */
+    margin-top: 20px; /* Added margin for spacing */
+    box-sizing: border-box;
+    position: fixed; /* Fixed position */
+    top: 20px; /* Distance from top */
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%); /* Adjust for centering */
+    z-index: 1000; /* Ensure it's above other content */
+    transition: top 0.3s ease-in-out; /* Added for smooth transition */
+}
+
+.top-bar.hidden {
+    top: -100px; /* Adjust this value to ensure it's completely off-screen */
+}
+
+.top-bar.visible {
+    top: 20px;
+}
+
+.top-bar .logo {
+    display: flex;
+    align-items: center;
+    gap: 0px; /* No gap in figma, but can be adjusted */
+}
+
+.top-bar .logo-visamade,
+.hero-content .logo-large .logo-visamade {
+    font-weight: 700;
+    font-size: 20px; /* style_G7WMFV fontSize for top-bar, style_CMYNVE for hero */
+    color: #0F172B; /* fill_UUMNVV */
+}
+
+.top-bar .logo-easy,
+.hero-content .logo-large .logo-easy {
+    font-weight: 700;
+    font-size: 20px; /* style_G7WMFV fontSize for top-bar, style_CMYNVE for hero */
+    color: #1E46A4; /* fill_ELNAFZ */
+}
+
+.top-bar .logo-easy {
+    text-decoration: underline;
+}
+
+.nav-links {
+    display: flex;
+    gap: 102px; /* layout_94VORE gap */
+}
+
+.nav-links a {
+    font-size: 16px; /* style_AZYV6F fontSize */
+    font-weight: 400; /* style_AZYV6F fontWeight */
+    color: #0F172B; /* fill_UUMNVV */
+    text-decoration: none;
+}
+
+.auth-buttons {
+    display: flex;
+    align-items: center;
+    gap: 30px; /* layout_S32H0Q gap */
+}
+
+.login-button {
+    font-size: 16px; /* style_U1I3VY fontSize */
+    font-weight: 700; /* style_U1I3VY fontWeight */
+    color: #0F172B; /* fill_UUMNVV */
+    text-decoration: none;
+}
+
+.cta-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px; /* layout_BYL6QS gap */
+    padding: 8px 20px; /* layout_BYL6QS padding */
+    background-color: #1E46A4; /* fill_ELNAFZ */
+    color: #FFFFFF; /* fill_K3AP1J */
+    font-size: 16px; /* style_U1I3VY fontSize */
+    font-weight: 700; /* style_U1I3VY fontWeight */
+    border-radius: 88px; /* layout_BYL6QS borderRadius */
+    text-decoration: none;
+}
+
+.cta-button img {
+    width: 16px; /* Assuming icon size, adjust if needed */
+    height: 16px;
+}
+
+/* Hero Section Styles */
+.hero-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding-top: 350px; /* Adjust to ensure content is below fixed nav bar */
+    padding-bottom: 50px; /* Added padding */
+    position: relative; /* For positioning background elements */
+    width: 100%;
+    min-height: 70vh; /* Give some height */
+}
+
+.hero-background-elements {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: visible; /* Allow elements to be positioned freely based on Figma */
+    z-index: 0; /* Behind hero content, but visible */
+    /* Ensure the container itself doesn't inadvertently get a small size */
+    min-height: 500px; /* Or a height that can contain the elements */
+}
+
+/*
+Chain: vector.svg -> image_1_traced.svg -> vector_1.svg -> flying_airplane_traced.svg (image_3_traced) -> vector_3.svg
+All opacities to 1. Sizes are from Figma where available, positions are relative approximations.
+*/
+
+/* 1. vector.svg (bg-vector-main) - Starting point, bottom-left-ish */
+.hero-background-elements .bg-vector-main {
+    position: absolute;
+    bottom: 14%; /* Adjusted */
+    left: 8%;   /* Adjusted */
+    width: 380px; /* Increased size */
+    height: auto;
+    opacity: 1;
+    transform: rotate(0deg); /* Adjusted rotation */
+}
+
+/* 2. image_1_traced.svg (bg-img-1) - Connects from bg-vector-main, moves towards center */
+.hero-background-elements .bg-img-1 {
+    position: absolute;
+    bottom: 17%; /* Adjusted */
+    left: 31%;   /* Adjusted */
+    width: 220px; /* Decreased size */
+    height: auto;
+    opacity: 1;
+    transform: rotate(-4deg); /* Original rotation */
+}
+
+/* 3. vector_1.svg (bg-vector-1) - Connects from bg-img-1, moves towards top-right to connect to plane */
+.hero-background-elements .bg-vector-1 {
+    position: absolute;
+    top: 44%;    /* Adjusted */
+    left: 45%;   /* Adjusted */
+    width: 300px; /* Adjusted size */
+    height: auto;
+    opacity: 1;
+    transform: rotate(-5deg) scaleX(1); /* Adjusted rotation to point more towards plane */
+}
+
+/* 4. flying_airplane_traced.svg (bg-img-2) - Connects from bg-vector-1, top-right area */
+.hero-background-elements .bg-img-2 { /* This is the airplane */
+    position: absolute;
+    top: 45%;    /* Adjusted */
+    right: 18%;  /* Adjusted */
+    width: 300px; /* Decreased size */
+    height: auto;
+    opacity: 1;
+}
+
+/* 5. vector_3.svg (bg-vector-2) - Connects from airplane, extends further right/down */
+.hero-background-elements .bg-vector-2 {
+    position: absolute;
+    top: 62%;    /* Adjusted */
+    right: 9%;   /* Adjusted */
+    width: 250px;  /* Increased size */
+    height: auto;
+    opacity: 1;
+    transform: rotate(-5deg); /* Adjusted rotation */
+}
+
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px; /* layout_2W1YDY gap */
+    max-width: 767px; /* layout_2W1YDY dimensions.width */
+    position: relative; /* Ensure it's above background elements */
+    z-index: 1; /* Above .hero-background-elements */
+}
+
+.hero-content .logo-large {
+    display: flex;
+}
+
+.hero-content .logo-large .logo-visamade {
+    font-size: 60px; /* style_CMYNVE fontSize */
+    font-weight: 700; /* style_CMYNVE fontWeight */
+    color: #0F172B; /* fill_UUMNVV */
+}
+
+.hero-content .logo-large .logo-easy {
+    font-size: 60px; /* style_CMYNVE fontSize */
+    font-weight: 700; /* style_CMYNVE fontWeight */
+    color: #1E46A4; /* fill_ELNAFZ */
+}
+
+.hero-content .logo-large .logo-easy {
+    text-decoration: underline;
+}
+
+.hero-content h1 {
+    font-size: 30px; /* style_DQTOMS fontSize */
+    font-weight: 400; /* style_DQTOMS fontWeight */
+    color: #0F172B; /* fill_UUMNVV */
+    line-height: 1.21; /* style_DQTOMS lineHeight */
+}
+
+/* Features Section Styles */
+.features-section {
+    display: flex;
+    justify-content: center;
+    gap: 104px; /* layout_0U59EP gap */
+    padding: 50px 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.feature-tab {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px; /* layout_3YPCUJ gap */
+    width: 244px; /* layout_3YPCUJ dimensions.width */
+    text-align: center;
+}
+
+.feature-tab img {
+    width: 48px; /* Assuming icon size, adjust if needed */
+    height: 48px;
+}
+
+.feature-tab p {
+    font-size: 20px; /* style_JO95S0 fontSize */
+    font-weight: 400; /* style_JO95S0 fontWeight */
+    color: #0F172B; /* fill_UUMNVV */
+    line-height: 1.21; /* style_JO95S0 lineHeight */
+}
+
+/* About Section Styles */
+.about-section {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* layout_NLK17J gap */
+    width: 940px; /* layout_NLK17J dimensions.width */
+    padding: 50px 20px;
+    box-sizing: border-box;
+    margin: 0 auto; /* Center the section */
+}
+
+.about-section h2 {
+    font-size: 30px; /* style_OL6RDB fontSize */
+    font-weight: 700; /* style_OL6RDB fontWeight */
+    color: #000000; /* fill_QYRUJN */
+    line-height: 1.21; /* style_OL6RDB lineHeight */
+}
+
+.about-section p {
+    font-size: 16px; /* style_2KQ7VA fontSize */
+    font-weight: 400; /* style_2KQ7VA fontWeight */
+    color: #000000; /* fill_QYRUJN */
+    line-height: 1.21; /* style_2KQ7VA lineHeight */
+}
+
+/* FAQ Section Styles */
+.faq-section {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* layout_NLK17J gap (similar structure) */
+    width: 940px; /* layout_NLK17J dimensions.width (similar structure) */
+    padding: 50px 20px;
+    box-sizing: border-box;
+    margin: 0 auto; /* Center the section */
+}
+
+.faq-section h2 {
+    font-size: 30px; /* style_OL6RDB fontSize */
+    font-weight: 700; /* style_OL6RDB fontWeight */
+    color: #000000; /* fill_QYRUJN */
+    line-height: 1.21; /* style_OL6RDB lineHeight */
+}
+
+.faq-accordion {
+    display: flex;
+    flex-direction: column;
+    gap: 8px; /* layout_43VXOO gap */
+    width: 100%;
+}
+
+.accordion-item {
+    border-bottom: 2px solid #7C8FBE; /* stroke_WBNP1Y */
+    padding: 8px 0px; /* layout_NUPIO6 padding */
+}
+
+.accordion-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer; /* Indicate it's clickable */
+}
+
+.accordion-header span {
+    font-size: 16px; /* style_0JRXT2 fontSize */
+    font-weight: 700; /* style_0JRXT2 fontWeight */
+    color: #0F172B; /* fill_UUMNVV */
+    line-height: 1.21; /* style_0JRXT2 lineHeight */
+    flex-grow: 1;
+}
+
+.accordion-header img.accordion-arrow { /* Renamed from .accordion-header img and added .accordion-arrow */
+    width: 12px; 
+    height: 7px; 
+    transition: transform 0.3s ease;
+    transform: rotate(90deg); /* Default: points right (closed) */
+}
+
+.accordion-header img.accordion-arrow.open {
+    transform: rotate(0deg); /* Points down (open) */
+}
+
+.accordion-content {
+    padding: 10px 0px; /* Add some padding to the content */
+    font-size: 15px;
+    color: #333D52; /* Slightly softer text color for answer */
+    text-align: left; /* Align answer text to the left */
+    border-top: 1px solid #e0e0e0; /* Optional: separator line */
+    margin-top: 8px;
+}
+
+.accordion-content p {
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* Responsive adjustments (basic example) */
+@media (max-width: 1200px) {
+    .top-bar {
+        width: 95%;
+        padding: 12px 20px;
+    }
+    .nav-links {
+        gap: 50px;
+    }
+    .features-section, .about-section, .faq-section {
+        width: 90%;
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+}
+
+@media (max-width: 768px) {
+    .top-bar {
+        flex-direction: column;
+        gap: 10px;
+        border-radius: 0;
+        position: relative; /* No longer fixed on small screens */
+        margin-top: 0;
+        width: 100%;
+    }
+    .nav-links {
+        flex-direction: column;
+        gap: 15px;
+        align-items: center;
+    }
+    .auth-buttons {
+        flex-direction: column;
+        gap: 15px;
+    }
+    .hero-section {
+        padding-top: 20px; /* Adjust because nav is not fixed */
+    }
+    .hero-content h1 {
+        font-size: 24px;
+    }
+    .hero-content .logo-large .logo-visamade,
+    .hero-content .logo-large .logo-easy {
+        font-size: 40px;
+    }
+    .features-section {
+        flex-direction: column;
+        align-items: center;
+        gap: 40px;
+    }
+    .feature-tab {
+        width: 80%;
+    }
+    .about-section, .faq-section {
+        width: 90%;
+    }
+}

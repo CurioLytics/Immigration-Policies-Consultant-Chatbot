@@ -1,0 +1,1245 @@
+/* General body styles to ensure Inter font is used if available */
+body {
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+.chatbot-container {
+  background: #EDF2FB;
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+  opacity: 1;
+}
+
+.sidebar-layout-container {
+  width: 300px;
+  flex-shrink: 0;
+  background: #E2EAFC;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+}
+
+.sidebar {
+  width: 300px;
+  flex-shrink: 0;
+  background: #E2EAFC;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  padding: 32px 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 36px;
+  overflow-y: auto;
+}
+
+.sidebar-frame98 { /* Renamed from Frame 98 under Sidebar */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 16px;
+  gap: 182px; /* This large gap suggests space-between is key */
+  width: 260px;
+  height: 30px;
+  /* Inside auto layout */
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.icon-edit {
+  width: 30px;
+  height: 30px;
+  /* Inside auto layout */
+  flex: none;
+  order: 0;
+  /* align-self: stretch; This might conflict with fixed width/height */
+  flex-grow: 0;
+  position: relative; /* For child 'shape' */
+}
+
+.icon-edit-shape {
+  position: absolute;
+  width: 25px; /* Corrected from height: 25px, left: 8.73% etc. assuming it's a square icon */
+  height: 25px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background: #0F172B; /* Placeholder for actual icon path */
+}
+
+.icon-search {
+  width: 30px;
+  height: 30px;
+  /* Inside auto layout */
+  flex: none;
+  order: 1;
+  /* align-self: stretch; */
+  flex-grow: 0;
+  position: relative; /* For child 'shape' */
+}
+
+.icon-search-shape {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background: #0F172B; /* Placeholder for actual icon path */
+}
+
+.sidebar-menu-tag { /* Renamed from Menu tag under Sidebar */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 8px 16px;
+  gap: 9px;
+  width: 260px;
+  height: 40px;
+  border-radius: 12px;
+  /* Inside auto layout */
+  flex: none;
+  order: 1;
+  align-self: stretch;
+  flex-grow: 0;
+  cursor: pointer;
+}
+
+.sidebar-menu-tag:hover {
+  background: #CCDBFD; /* Example hover state */
+}
+
+.icon-home {
+  width: 24px;
+  height: 24px;
+  /* Inside auto layout */
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  position: relative;
+}
+
+.icon-home-vector { /* Was Vector 2 */
+  position: absolute;
+  width: 21px;
+  height: 20px;
+  left: 1.5px;
+  top: 2px;
+  border: 2px solid #1E46A4;
+  border-radius: 1px;
+}
+
+.sidebar-menu-tag-text { /* Was "Trang chủ" */
+  width: 195px;
+  height: 19px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  color: #0F172B;
+  /* Inside auto layout */
+  flex: none;
+  order: 1;
+  flex-grow: 1;
+}
+
+.sidebar-frame97 { /* Renamed from Frame 97 under Sidebar */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 8px;
+  width: 260px;
+  /* height: 104px; Auto height based on content is better */
+  /* Inside auto layout */
+  flex: none;
+  order: 2;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.sidebar-dropdown {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 16px;
+  gap: 10px;
+  width: 260px;
+  height: 24px;
+  /* Inside auto layout */
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
+  cursor: pointer;
+}
+
+.sidebar-dropdown-projects-text { /* Was "Projects" */
+  /* margin: 0 auto; This would center it if it's the only item, but with space-between, it's not needed */
+  height: 19px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19px;
+  color: #0F172B;
+  /* Inside auto layout */
+  flex: none;
+  order: 0;
+  flex-grow: 0; /* Let's allow it to grow to push arrow to the right: flex-grow: 1; */
+}
+
+.sidebar-frame96 { /* Renamed from Frame 96 under Sidebar-Frame97 */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 2px;
+  width: 260px;
+  /* height: 72px; */
+  /* Inside auto layout */
+  flex: none;
+  order: 1;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.sidebar-sub-menu-tag { /* Renamed from Menu tag under Frame 96 */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 8px 16px; /* Adjusted padding from 8px 16px to 8px 16px 8px 40px for indentation */
+  gap: 9px;
+  width: 260px;
+  height: 35px;
+  border-radius: 12px;
+  /* Inside auto layout */
+  flex: none;
+  /* order: 0; or 1 depending on instance */
+  align-self: stretch;
+  flex-grow: 0;
+  cursor: pointer;
+}
+.sidebar-sub-menu-tag:hover {
+  background: #CCDBFD;
+}
+
+
+.sidebar-sub-menu-tag .icon-home { /* Icon hidden in these menu tags */
+  display: none;
+}
+
+.sidebar-sub-menu-tag-text { /* Was "Trang chủ" text in sub-menu */
+  width: 228px; /* Max width */
+  height: 19px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  color: #0F172B;
+  /* Inside auto layout */
+  flex: none;
+  order: 1; /* Assuming icon would be order 0 if visible */
+  flex-grow: 1;
+  padding-left: 24px; /* Indent text since icon is hidden */
+}
+
+
+.sidebar-frame95 { /* Renamed from Frame 95 under Sidebar */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 20px;
+  width: 260px;
+  /* height: 409px; */
+  /* Inside auto layout */
+  flex: none;
+  order: 3;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+/* Frame 17 is structurally similar to sidebar-dropdown. Reusing or making a variant. */
+.sidebar-frame17-dropdown { /* Was Frame 17 */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 16px;
+  gap: 10px;
+  width: 260px;
+  height: 24px;
+  /* Inside auto layout */
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
+  cursor: pointer;
+}
+
+.sidebar-frame17-dropdown-text { /* Was "Projects" text in Frame 17 */
+  height: 19px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19px;
+  color: #0F172B;
+  flex: none;
+  order: 0;
+  flex-grow: 0; /* Changed to 0, if you want it to take space use 1 */
+}
+
+/* Re-use .icon-arrow-drop-down and its shape */
+
+.sidebar-frame94 { /* Was Frame 94 */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 20px;
+  width: 260px;
+  /* height: 365px; */
+  /* Inside auto layout */
+  flex: none;
+  order: 1;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.history-section { /* Generic class for Frame 20, 21, 22, 23 */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 4px;
+  width: 260px;
+  /* height varies */
+  /* Inside auto layout */
+  flex: none;
+  /* order varies */
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.history-section-header { /* Generic class for Frame 19 */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between; /* For text and icon */
+  align-items: center;
+  padding: 0px 16px;
+  gap: 8px;
+  width: 260px;
+  height: 20px; /* or 17px based on other instances */
+  /* Inside auto layout */
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.history-section-title { /* E.g., "Đã ghim", "Hôm qua" */
+  /* width varies */
+  height: 17px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 17px;
+  color: #0F172B;
+  /* Inside auto layout */
+  flex: none;
+  order: 0;
+  flex-grow: 0; /* Allow text to take its space, icon will be pushed by justify-content */
+}
+
+.icon-pin {
+  /* margin: 0 auto; */
+  width: 20px;
+  height: 20px;
+  /* Inside auto layout */
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+  position: relative;
+}
+
+.icon-pin-vector {
+  position: absolute;
+  width: 15px; /* height: 15px */
+  height: 15px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background: #0F172B; /* Placeholder, use SVG/image */
+  border: 2px solid #0F172B; /* This might be part of the icon's look */
+}
+
+.history-menu-tag { /* Menu tag under history sections */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 8px 16px;
+  gap: 9px;
+  width: 260px;
+  height: 35px;
+  border-radius: 12px;
+  /* Inside auto layout */
+  flex: none;
+  /* order varies */
+  align-self: stretch;
+  flex-grow: 0;
+  cursor: pointer;
+}
+.history-menu-tag:hover {
+  background: #e0e8f5; /* Lighter hover for non-active */
+}
+
+.history-menu-tag.active { /* For the "Đã ghim" selected item */
+  background: #CCDBFD;
+}
+
+.history-menu-tag .icon-home { /* Icon hidden */
+  display: none;
+}
+
+.history-menu-tag-text { /* Text for history items */
+  width: 228px; /* Max width */
+  height: 19px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  color: #0F172B;
+  /* Inside auto layout */
+  flex: none;
+  order: 1; /* If icon was 0 */
+  flex-grow: 1;
+  padding-left: 24px; /* Indent text */
+}
+
+/* Main Content Area (Frame 99) */
+.main-content {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.top-bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 32px;
+  /* gap: 841px; Large gap handled by space-between */
+  width: 100%; /* Was 979px, make it responsive to parent */
+  height: 91px;
+  /* position: absolute; Not needed if main-content is flex column */
+  /* left: 0px; top: 0px; */
+  flex-shrink: 0; /* Prevent shrinking */
+}
+
+.logo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px;
+  /* width: 142px; auto width */
+  height: 24px;
+  /* Inside auto layout */
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+
+.logo-text {
+  height: 24px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  color: #0F172B;
+  /* Inside auto layout */
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+
+.logo-text-highlight {
+  font-family: 'Inter'; /* Inherits font-weight and size */
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  text-decoration-line: underline;
+  color: #1E46A4;
+}
+
+.top-bar-actions { /* Was Frame 98 under Top bar */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px;
+  gap: 20px;
+  /* width: 256px; auto based on content */
+  height: 55px;
+  /* Inside auto layout */
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}
+
+.button-share { /* Was Frame 99 under Top bar actions */
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 8px 16px;
+  gap: 8px;
+  /* width: 121px; auto */
+  height: 40px;
+  border: 2px solid #0F172B;
+  border-radius: 20px;
+  /* Inside auto layout */
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  cursor: pointer;
+}
+
+.icon-upload {
+  width: 24px;
+  height: 24px;
+  /* Inside auto layout */
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  position: relative;
+}
+
+.icon-upload-shape {
+  position: absolute;
+  width: 16px; /* Approx from percentages */
+  height: 20px; /* Approx */
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background: #0F172B; /* Placeholder for upload icon */
+}
+
+.button-share-text { /* Was "Chia sẻ" */
+  /* width: 57px; */
+  height: 19px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  color: #0F172B;
+  /* Inside auto layout */
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}
+
+.icon-more-vertical {
+  width: 40px;
+  height: 40px;
+  /* Inside auto layout */
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+  position: relative;
+  cursor: pointer;
+}
+
+.icon-more-vertical-shape {
+  position: absolute;
+  width: 3.33px; /* Approx from 41.67% left/right for a 40px parent */
+  height: 16.67px; /* Approx */
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background: #0F172B; /* Placeholder for 3 dots icon */
+}
+
+.avatar-ellipse { /* Was Ellipse 1 */
+  width: 55px;
+  height: 55px;
+  background: #ccc; /* Placeholder background color */
+  background-size: cover;
+  background-position: center;
+  border-radius: 50%; /* Make it round */
+  /* Inside auto layout */
+  flex: none;
+  order: 2;
+  flex-grow: 0;
+}
+
+.chat-area-container { /* Was Frame 109 */
+  width: 100%; 
+  flex-grow: 1; 
+  overflow-y: auto; 
+  padding: 20px 32px; 
+  display: flex; 
+  flex-direction: column;
+  padding-bottom: 110px; /* Added padding to prevent overlap with fixed input area */
+}
+
+.chat-messages-wrapper { /* Was Frame 104 */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Messages align left by default, user message will align right */
+  padding: 0px;
+  gap: 20px; /* Increased gap from 60px, seems too large */
+  /* position: absolute; */
+  width: 780px; /* Max width for messages */
+  /* height: 557px; Auto height */
+  /* left: calc(50% - 780px/2 + 0.5px); */ /* Centering */
+  /* top: 0px; */
+  margin: 0 auto; /* Center the message block */
+}
+
+.user-message-bubble { /* Was Frame 100 */
+  display: flex; /* Changed from flex to inline-block or block for natural text flow */
+  flex-direction: row; /* Not really needed for single text block */
+  justify-content: flex-start; /* Text usually starts left in its bubble */
+  align-items: center;
+  padding: 16px 24px;
+  gap: 8px;
+  /* width: 363px; Let width be intrinsic */
+  min-height: 70px; /* If fixed height is desired */
+  background: #CCDBFD;
+  border-radius: 24px 12px 24px 24px; /* Specific rounding */
+  /* Inside auto layout */
+  flex: none; /* This makes it not take full width */
+  order: 0; /* Example order */
+  flex-grow: 0;
+  align-self: flex-end; /* Align user messages to the right */
+  max-width: 80%; /* Prevent overly wide bubbles */
+}
+
+.user-message-text { /* Was "Liệt kê những giấy tờ..." */
+  /* width: 315px; */
+  /* height: 38px; */
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  color: #0F172B;
+  /* Inside auto layout */
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+
+.bot-response-container { /* Was Frame 103 (first instance in chat) */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 16px; /* Reduced from 36px */
+  width: 780px; /* Full width for bot messages */
+  /* height: 427px; */
+  /* Inside auto layout */
+  flex: none;
+  order: 1; /* Example order */
+  align-self: stretch; /* Bot messages take full width */
+  flex-grow: 0;
+  max-width: 100%;
+  background-color: transparent;
+}
+
+.bot-message-group { /* Was Frame 101 */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 16px 24px; /* Added padding for bubble appearance */
+  gap: 8px;
+  width: 100%; /* Was 780px */
+  /* height: 84px; */
+  background: #FFFFFF; /* Give bot messages a background */
+  border-radius: 12px 24px 24px 24px; /* Different rounding for bot */
+  /* Inside auto layout */
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
+  background-color: transparent;
+}
+
+.bot-message-text { /* E.g. "Tất nhiên!" */
+  width: 100%; /* Was 780px */
+  /* height: 19px; */
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  color: #0F172B;
+  /* Inside auto layout */
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.bot-message-paragraph { /* E.g. "Khi xin visa du học Mỹ..." */
+  width: 100%; /* Was 780px */
+  /* height: 57px; */
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  color: #0F172B;
+  /* Inside auto layout */
+  flex: none;
+  order: 1;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.chat-separator-line { /* Was Line 1, Line 2 */
+  width: 100%; /* Was 780px */
+  height: 1px; /* Not 0px */
+  border: none;
+  border-top: 1px solid #7C8FBE;
+  /* transform: rotate(-0.07deg); Ignoring slight rotation */
+  /* Inside auto layout */
+  flex: none;
+  /* order varies */
+  align-self: stretch;
+  flex-grow: 0;
+  margin: 16px 0; /* Add some margin around separators */
+}
+
+.bot-message-section { /* Was Frame 102 and Frame 103 (second instance) */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 16px 24px; /* Added padding */
+  gap: 8px;
+  width: 100%; /* Was 780px */
+  /* height varies */
+  background: #FFFFFF;
+  border-radius: 12px 24px 24px 24px;
+  /* Inside auto layout */
+  flex: none;
+  /* order varies */
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.bot-message-section-title { /* E.g. "Giấy tờ chứng minh tài khoản ngân hàng" */
+  width: 100%; /* Was 780px */
+  /* height: 24px; */
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  color: #0F172B;
+  /* Inside auto layout */
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.bot-message-section-content { /* E.g. "Sổ tiết kiệm..." */
+  width: 100%; /* Was 780px */
+  /* height varies */
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400; /* Changed from 700 to 400 for content vs title */
+  font-size: 16px;
+  line-height: 19px;
+  color: #0F172B;
+  /* Inside auto layout */
+  flex: none;
+  order: 1;
+  align-self: stretch;
+  flex-grow: 0;
+}
+.bot-message-section-content ul {
+  padding-left: 20px;
+  margin-top: 8px;
+  margin-bottom: 0;
+}
+.bot-message-section-content li {
+  margin-bottom: 4px;
+}
+
+
+.input-area-background {
+  position: fixed;
+  bottom: 0;
+  left: 300px; /* Assuming sidebar width is 300px */
+  right: 0;
+  /* width: calc(100% - 300px); */ /* Alternative to left/right */
+  background-color: transparent; /* White background for the fixed bar */
+  padding: 15px 0; /* Vertical padding, horizontal centering handled by flex */
+  display: flex;
+  justify-content: center; /* Center the TextInputField component */
+  align-items: center;
+  /* box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1); */ /* Removed shadow */
+  z-index: 1050; /* Ensure it's above other content like TopBar if it also becomes fixed */
+  /* margin-top: auto; */ /* No longer needed */
+  /* padding-bottom: 20px; */ /* Incorporated into overall padding */
+}
+
+.text-input-field-container {
+  /* Auto layout */
+  display: flex;
+  flex-direction: row; /* Changed to row for text and button */
+  align-items: center; /* Align items vertically */
+  padding: 12px 24px; /* Adjusted padding */
+  gap: 16px;
+  /* position: absolute; Not needed if input-area-background handles positioning */
+  width: 760px; /* Max width */
+  /* height: 113px; Height will be determined by content + padding */
+  /* left: calc(50% - 760px/2 + 0.5px); Centered by parent */
+  /* top: 534px; */
+  background: #FFFFFF; /* Changed from #EDF2FB to make it distinct */
+  border: 2px solid #7C8FBE;
+  border-radius: 32px;
+}
+
+.text-input-field { /* Actual input element */
+  flex-grow: 1; /* Take available space */
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  color: #0F172B;
+}
+
+.text-input-field::placeholder { /* Styling for "Hỏi mình về hồ sơ du học nè" */
+  color: #7C8FBE; /* Lighter color for placeholder */
+  opacity: 1;
+}
+
+
+.send-button-icon { /* Was Vector (the plus/send icon) */
+  width: 30px;
+  height: 30px;
+  border: 2px solid #0F172B; /* This is likely a placeholder style */
+  border-radius: 50%; /* Make it circular */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background-color: #0F172B; /* Fill color */
+  color: white; /* Icon color */
+  font-size: 20px; /* For a text-based icon like '+' */
+  flex-shrink: 0;
+}
+
+/* Helper class for hidden icons if needed beyond display:none */
+.icon-hidden {
+  display: none !important;
+}
+
+/* Styles for TopBar when on Chatbot page to override fixed positioning */
+/* This targets the .topbar class specifically when inside the chatbot's main content area */
+.chatbot-container .main-content .topbar {
+  position: relative !important; /* Override fixed position */
+  width: 100% !important;
+  max-width: none !important;
+  top: 0 !important;
+  left: 0 !important;
+  transform: none !important;
+  margin: 0 !important; /* Remove auto margins */
+  border-radius: 0 !important; /* Remove rounded corners for full-width top bar */
+  /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important; */ /* Removed shadow */
+  flex-shrink: 0 !important;
+  background-color: transparent !important; /* Made transparent */
+}
+
+/* Empty chat message */
+.empty-chat-message {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+  width: 100%;
+  text-align: center;
+  padding: 20px;
+}
+
+.empty-chat-message p {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  color: #64748B;
+  line-height: 1.5;
+}
+
+/* Loading indicator styles */
+.bot-response-container.loading {
+  padding: 15px 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.typing-indicator {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 10px 15px;
+  background: #E2EAFC;
+  border-radius: 12px;
+  width: fit-content;
+}
+
+.typing-indicator span {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  background-color: #1E46A4;
+  border-radius: 50%;
+  opacity: 0.6;
+  animation: typing 1.4s infinite both;
+}
+
+.typing-indicator span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.typing-indicator span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes typing {
+  0% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+  100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+}
+
+/* Error message styles */
+.error-message {
+  padding: 15px 20px;
+  margin: 10px 0;
+  background-color: #FEECEC;
+  border-left: 4px solid #E53E3E;
+  border-radius: 4px;
+}
+
+.error-message p {
+  margin: 0;
+  color: #E53E3E;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+}
+
+/* Disable input while loading */
+.text-input-field-container.disabled {
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+/* Markdown Styling for Bot Messages */
+.bot-message-text {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #0F172B;
+}
+
+/* Format Markdown headings */
+.bot-message-text h1, 
+.bot-message-text h2, 
+.bot-message-text h3, 
+.bot-message-text h4, 
+.bot-message-text h5, 
+.bot-message-text h6 {
+  margin-top: 1em;
+  margin-bottom: 0.5em;
+  font-weight: 700;
+  line-height: 1.3;
+  color: #1E46A4;
+}
+
+.bot-message-text h1 { font-size: 1.75em; }
+.bot-message-text h2 { font-size: 1.5em; }
+.bot-message-text h3 { font-size: 1.25em; }
+.bot-message-text h4 { font-size: 1.15em; }
+.bot-message-text h5, .bot-message-text h6 { font-size: 1em; }
+
+/* Format Markdown paragraphs */
+.bot-message-text p {
+  margin-bottom: 0.75em;
+}
+
+/* Format Markdown lists */
+.bot-message-text ul, 
+.bot-message-text ol {
+  margin-top: 0.5em;
+  margin-bottom: 1em;
+  margin-left: 1.5em;
+}
+
+.bot-message-text li {
+  margin-bottom: 0.35em;
+}
+
+.bot-message-text ol li {
+  list-style-type: decimal;
+}
+
+.bot-message-text ul li {
+  list-style-type: disc;
+}
+
+/* Format Markdown links */
+.bot-message-text a {
+  color: #1E46A4;
+  text-decoration: underline;
+  transition: color 0.2s ease;
+}
+
+.bot-message-text a:hover {
+  color: #2563EB;
+}
+
+/* Format Markdown code blocks and inline code */
+.bot-message-text pre {
+  background-color: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  border-radius: 4px;
+  padding: 1em;
+  margin: 1em 0;
+  overflow-x: auto;
+  font-family: 'Consolas', 'Monaco', monospace;
+  font-size: 0.9em;
+  line-height: 1.5;
+}
+
+.bot-message-text code {
+  background-color: #F1F5F9;
+  border-radius: 3px;
+  padding: 0.2em 0.4em;
+  font-family: 'Consolas', 'Monaco', monospace;
+  font-size: 0.9em;
+  color: #0F172B;
+}
+
+/* Format Markdown tables */
+.bot-message-text table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1em 0;
+  overflow-x: auto;
+  display: block;
+}
+
+.bot-message-text table th,
+.bot-message-text table td {
+  border: 1px solid #CBD5E1;
+  padding: 0.5em 0.75em;
+  text-align: left;
+}
+
+.bot-message-text table th {
+  background-color: #F1F5F9;
+  font-weight: 600;
+}
+
+.bot-message-text table tr:nth-child(even) {
+  background-color: #F8FAFC;
+}
+
+/* Format Markdown blockquotes */
+.bot-message-text blockquote {
+  border-left: 4px solid #7C8FBE;
+  padding-left: 1em;
+  margin: 1em 0;
+  color: #334155;
+  font-style: italic;
+}
+
+/* Error text styling */
+.bot-message-text.error-text {
+  color: #E53E3E;
+  font-weight: 500;
+}
+
+/* Improved message transitions */
+.bot-response-container, .user-message-bubble {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Enhanced typing indicator */
+.typing-indicator {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 12px 16px;
+  background: #E2EAFC;
+  border-radius: 12px;
+  width: fit-content;
+  margin: 0;
+}
+
+.typing-indicator span {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background-color: #1E46A4;
+  border-radius: 50%;
+  opacity: 0.6;
+  animation: pulse 1.2s infinite ease-in-out;
+}
+
+.typing-indicator span:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.typing-indicator span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.typing-indicator span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(0.75);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Container styling improvements */
+.bot-message-group {
+  background-color: #fff;
+  border-radius: 12px 24px 24px 24px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  padding: 16px 20px;
+  max-width: 95%;
+}
+
+/* Highlight code syntax - basic styling without syntax highlighting library */
+.bot-message-text pre code {
+  background: transparent;
+  padding: 0;
+  font-size: 0.95em;
+  color: #334155;
+  display: block;
+}
+
+/* Error container styling */
+.bot-response-container.error .bot-message-group {
+  background-color: #FEF2F2;
+  border-left: 4px solid #E53E3E;
+}
+
+.bot-message-text.error-text {
+  color: #E53E3E;
+  font-weight: 500;
+}
+
+/* Add transition CSS at the end of the file */
+
+/* Fade-in animation for smooth page transition */
+.fade-in {
+  animation: fadeInAnimation 0.3s ease-in-out forwards;
+}
+
+@keyframes fadeInAnimation {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Class for handling input field transition */
+.sliding-input {
+  transition: all 0.4s ease-in-out;
+}
+
+/* Prevents flashy content jumps during transition */
+.guest-view-wrapper {
+  opacity: 0;
+}
+
+/* Initially set chatbot-container to visible (opacity 1) */
+.chatbot-container {
+  opacity: 1;
+}
+
+/* Only apply opacity 0 when explicitly given the fade-in class but not yet animated */
+.chatbot-container.fade-in {
+  opacity: 0;
+  animation: fadeInAnimation 0.3s ease-in-out forwards;
+}
+
+.guest-view-wrapper.fade-in {
+  opacity: 1;
+}
+
+/* Ensure height is maintained during transition to avoid page jumps */
+.chatbot-guest-container, .chatbot-container {
+  min-height: 100vh;
+}
+
+/* Smooth transition for content */
+.chat-messages-area, .chat-onboard-guest-centered {
+  transition: opacity 0.3s ease-in-out;
+}
+
+/* Ensure TextInputField transitions smoothly */
+.input-area-background, .guest-input-area-background {
+  transition: transform 0.4s ease-in-out;
+}

@@ -1,0 +1,334 @@
+/* General TopBar Styling */
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 36px; /* Default padding, can be overridden */
+    font-family: 'Inter', sans-serif;
+    box-sizing: border-box;
+    width: 100%; /* Changed from 80% */
+    margin: 0; /* Changed from 0 auto */
+    position: sticky; /* Changed from fixed */
+    left: 0; /* Changed from 50% */
+    top: 0; /* Changed from 10px */
+    z-index: 1000; /* Ensure it stays on top */
+    background-color: #FFFFFF; /* Assuming white background for logged-in state, adjust if needed */
+}
+
+.topbar-left,
+.topbar-center,
+.topbar-right {
+    display: flex;
+    align-items: center;
+}
+
+.topbar-left {
+    gap: 8px; /* Gap for logo or menu + logo */
+}
+
+.topbar-center {
+    gap: 102px; /* Gap between navigation links */
+    flex-grow: 1;
+    justify-content: center;
+}
+
+.topbar-right {
+    gap: 20px; /* Gap for buttons or user avatar */
+}
+
+/* Logo Styling */
+.topbar-logo {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+.logo-visamade {
+    font-weight: 700;
+    font-size: 20px;
+    color: #0F172B; /* As per Figma */
+}
+
+.logo-easy {
+    font-weight: 700;
+    font-size: 20px;
+    color: #1E46A4; /* As per Figma */
+}
+
+.topbar-logo,
+.topbar-logo .logo-visamade,
+.topbar-logo .logo-easy {
+    text-decoration: none !important; /* Ensure no underline */
+}
+
+/* Link Styling */
+.topbar-link {
+    text-decoration: none;
+    font-size: 16px;
+    color: #0F172B; /* Default link color, can be specific */
+    padding: 8px 12px; /* Mimicking Topbar tab padding */
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    transition: all 0.3s ease;
+}
+
+.topbar-link:hover {
+    text-decoration: underline;
+    color: #1E46A4; /* Change color on hover */
+}
+
+/* Style for active link/button */
+.topbar-link.active {
+    color: #1E46A4;
+    font-weight: 600;
+}
+
+/* Button Styling */
+.topbar-button {
+    padding: 8px 20px;
+    border-radius: 88px; /* As per Figma */
+    font-weight: 700;
+    font-size: 16px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: 2px solid transparent; /* Base for bordered buttons */
+    transition: all 0.3s ease;
+}
+
+.topbar-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.topbar-button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.topbar-icon-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #0F172B;
+    padding: 8px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.topbar-icon-button:hover {
+    background-color: rgba(30, 70, 164, 0.1);
+}
+
+.topbar-icon-button:hover .topbar-icon {
+    fill: #1E46A4;
+}
+
+/* Styles for icons */
+.topbar-icon {
+    width: 24px;
+    height: 24px;
+    fill: #0F172B;
+    transition: all 0.3s ease;
+}
+
+/* Specific TopBar States */
+
+/* Not Logged In - Default (e.g., Landing Page) */
+/* state=default, isLoggedIn=no */
+.topbar-not-logged-in-default {
+    background-color: #E2EAFC; /* As per Figma */
+}
+
+.topbar-not-logged-in-default .topbar-link {
+    color: #0F172B; /* Figma: text color for "Về chúng tôi", "FAQs" */
+}
+.topbar-not-logged-in-default .topbar-link:first-child { /* "Tính năng" */
+    color: #000000; /* Figma: text color for "Tính năng" */
+}
+
+
+.topbar-not-logged-in-default .topbar-button-login {
+    color: #1E46A4; /* Text color */
+    border-color: #1E46A4; /* Border color */
+    background-color: transparent;
+}
+
+.topbar-not-logged-in-default .topbar-button-register {
+    color: #FFFFFF; /* Text color */
+    background-color: #1E46A4; /* Background color */
+}
+
+/* Not Logged In - Started (e.g., after clicking "Bắt đầu" but before login/register actions) */
+/* state=started, isLoggedIn=no */
+.topbar-not-logged-in-started {
+    background-color: #E2EAFC;
+}
+.topbar-not-logged-in-started .topbar-link {
+    color: #0F172B;
+}
+.topbar-not-logged-in-started .topbar-button-login-alt { /* "Đăng nhập" button */
+    color: #FFFFFF;
+    background-color: #1E46A4;
+}
+.topbar-not-logged-in-started .topbar-button-register-alt { /* "Đăng ký" button */
+    color: #1E46A4;
+    border-color: #1E46A4;
+    background-color: transparent;
+}
+
+
+/* Not Logged In - In Chat */
+/* state=in-chat, isLoggedIn=no */
+.topbar-not-logged-in-chat {
+    background-color: #E2EAFC;
+}
+.topbar-not-logged-in-chat .topbar-left {
+    gap: 30px; /* Figma: gap between menu icon and logo */
+}
+.topbar-not-logged-in-chat .topbar-link {
+    color: #0F172B;
+}
+.topbar-not-logged-in-chat .topbar-button-login {
+    color: #FFFFFF;
+    background-color: #1E46A4;
+}
+.topbar-not-logged-in-chat .topbar-button-register {
+    color: #1E46A4;
+    border-color: #1E46A4;
+    background-color: transparent;
+}
+
+
+/* Logged In - Default (e.g., HomePage) */
+/* state=default, isLoggedIn=yes */
+.topbar-logged-in-default {
+    padding: 18px 32px; /* As per Figma */
+    background-color: transparent; /* Changed to transparent */
+    /* border-bottom: 1px solid #E2EAFC; */ /* Removed border */
+}
+
+.topbar-avatar {
+    width: 40px; /* As per Figma Ellipse 1 */
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    object-fit: cover;
+}
+
+/* Logged In - In Chat */
+/* state=in-chat, isLoggedIn=yes */
+.topbar-logged-in-chat {
+    padding: 18px 32px; /* As per Figma */
+    background-color: transparent; /* Changed to transparent */
+    /* border-bottom: 1px solid #E0E0E0; */ /* Removed border */
+}
+
+.topbar-logged-in-chat .topbar-right {
+    gap: 20px; /* As per Figma */
+}
+
+.topbar-button-share {
+    padding: 8px 16px;
+    border: 2px solid #0F172B; /* As per Figma */
+    border-radius: 20px; /* As per Figma */
+    background-color: transparent;
+    color: #0F172B;
+    font-size: 16px;
+    display: flex; /* Ensure icon and text align */
+    align-items: center; /* Ensure icon and text align */
+    gap: 8px; /* Gap between icon and text */
+}
+
+.topbar-button-share .topbar-icon {
+    fill: #0F172B;
+}
+
+/* Responsive adjustments if needed */
+@media (max-width: 768px) {
+    .topbar {
+        padding: 10px 15px;
+    }
+    .topbar-center {
+        display: none; /* Hide center links on small screens, or use a hamburger menu */
+    }
+    .topbar-left, .topbar-right {
+        flex-grow: 1;
+    }
+    .topbar-right {
+        justify-content: flex-end;
+    }
+    .logo-visamade, .logo-easy {
+        font-size: 18px;
+    }
+}
+
+/* Special styling for register page */
+.register-page-container .topbar {
+    top: 10px; /* Match other pages */
+}
+
+/* Add padding to page containers to account for fixed topbar */
+.register-page-container, 
+.login-page-container,
+.home-page-container,
+.landing-page {
+    padding-top: 80px; /* Adjust based on your topbar height + margins */
+}
+
+/* Smooth section scrolling */
+html {
+    scroll-behavior: smooth; /* Enable smooth scrolling */
+}
+
+/* Scroll padding for section navigation */
+section[id] {
+    scroll-margin-top: 100px; /* Adjust for the height of the topbar */
+}
+
+/* Add space for TopBar when scrolling up/down */
+body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    padding-top: 80px; /* Thêm padding-top cho tất cả trang */
+}
+
+/* Main container adjustment */
+.register-page-container, 
+.login-page-container,
+.home-page-container,
+.landing-page {
+    padding-top: 10px; /* Giảm padding top do đã thêm ở body */
+    position: relative; /* Để tạo context cho position absolute nếu cần */
+}
+
+/* Adjust scroll margins to account for fixed topbar */
+section[id] {
+    scroll-margin-top: 100px; /* Tăng lề trên khi scroll để có thêm không gian */
+}
+
+/* Custom scrollbar for nice UX */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #1E46A4;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #0F172B;
+}

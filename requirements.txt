@@ -1,0 +1,6 @@
+Flask
+Flask-JWT-Extended
+bcrypt
+psycopg2-binary
+Flask-SQLAlchemy
+Flask-Limiter 

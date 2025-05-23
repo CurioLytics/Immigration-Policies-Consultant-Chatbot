@@ -1,0 +1,401 @@
+/* Sidebar */
+.sidebar {
+  /* Auto layout */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 32px 20px;
+  gap: 36px;
+
+  position: relative; /* Changed from absolute based on user feedback */
+  width: 300px;
+  height: 832px; /* Or 100vh if full viewport height is preferred and scrollable content */
+
+  background: #E2EAFC;
+  font-family: 'Inter', sans-serif; /* Ensuring font is set */
+  color: #0F172B; /* Ensuring default text color */
+}
+
+/* Frame 98 */
+
+/* Auto layout */
+.sidebar-frame98 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 16px; /* User CSS has 0px 16px, my previous had 0px */
+  /* gap: 182px; */ /* space-between handles this */
+  width: 260px; /* This is the content width within the 300px sidebar */
+  height: 30px;
+  /* Inside auto layout */
+  flex: none;
+  order: 0; /* This is correct */
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+/* Icons/Edit & Icons/Search - General styling for their containers if needed */
+/* The actual icons are <img> tags, so their specific styling is below */
+.icon-edit-img, .icon-search-img {
+  width: 25px; /* Based on Figma's 'Shape' dimensions */
+  height: 25px;
+  /* The 'background: #0F172B;' from Figma's shape is for the icon color itself,
+     which is inherent to the PNG. If these were SVGs, we might apply 'fill'. */
+}
+
+
+/* Menu tag - For Home link */
+.sidebar-menu-tag {
+  /* Auto layout */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 8px 16px;
+  gap: 9px;
+  width: 260px;
+  height: 40px;
+  background: #CCDBFD;
+  border-radius: 12px;
+  /* Inside auto layout */
+  flex: none;
+  order: 1; /* This is correct */
+  align-self: stretch;
+  flex-grow: 0;
+  text-decoration: none; /* For Link component */
+  color: #0F172B; /* Ensure text color is set */
+  cursor: pointer;
+}
+
+/* Icons/Home - Container for the home icon image */
+.sidebar-menu-tag-icon {
+  width: 24px;
+  height: 24px;
+  /* Inside auto layout */
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  display: flex; /* To center the image if it's smaller */
+  align-items: center;
+  justify-content: center;
+  position: relative; /* For the ::before pseudo-element if used for border */
+}
+.sidebar-menu-tag-icon img {
+  width: 21px; /* As per 'Vector 2' */
+  height: 20px; /* As per 'Vector 2' */
+  /* The border from 'Vector 2' (border: 2px solid #1E46A4; border-radius: 1px;)
+     is part of the icon's appearance. If the PNG doesn't include it,
+     it's hard to replicate perfectly on an <img> tag without an extra wrapper or pseudo-element.
+     For now, assuming the PNG includes this visual detail. */
+}
+
+
+/* Trang chủ - Text for Home link */
+.sidebar-menu-tag-text {
+  /* width: 195px; */ /* flex-grow handles this */
+  height: 19px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  color: #0F172B;
+  /* Inside auto layout */
+  flex: none;
+  order: 1;
+  flex-grow: 1;
+}
+
+
+/* Frame 97 - Container for "Hồ sơ" section */
+.sidebar-section-container.ho-so-section { /* Added specific class for order */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 8px;
+  width: 260px;
+  /* height: 104px; */ /* Auto height */
+  flex: none;
+  order: 2; /* This is correct */
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+/* Frame 95 - Container for "Đoạn chat" section */
+.sidebar-section-container.doan-chat-section { /* Added specific class for order */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 20px; /* Restoring gap between "Đoạn chat" header and chat groups container */
+  width: 260px;
+  /* height: 409px; */ /* Auto height */
+  flex: none;
+  order: 3; /* This is correct */
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+
+/* Dropdown - Header for sections like "Hồ sơ", "Đoạn chat" */
+.sidebar-dropdown-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 16px;
+  gap: 10px;
+  width: 260px;
+  height: 24px;
+  flex: none;
+  order: 0; /* Within its section container */
+  align-self: stretch;
+  flex-grow: 0;
+  cursor: pointer;
+}
+
+/* Projects - Title text in dropdown header */
+.sidebar-dropdown-title {
+  /* margin: 0 auto; */ /* Removed, flex handles alignment */
+  /* width: 110px; */ /* Auto width */
+  height: 19px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19px;
+  color: #0F172B;
+  flex: none;
+  order: 0;
+  flex-grow: 1; /* Allow title to take space */
+}
+
+/* Icons/Arrow drop down - Container for the arrow icon */
+.sidebar-dropdown-icon {
+  /* margin: 0 auto; */ /* Removed */
+  width: 20px;
+  height: 20px;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* The 'Shape' with background #0F172B is the arrow itself.
+     If using a text arrow '▼', style it directly.
+     If an image/SVG, that asset would be #0F172B. */
+}
+.sidebar-dropdown-icon span { /* Styling for the text arrow '▼' */
+  color: #0F172B;
+  font-size: 12px; /* Adjust size as needed */
+}
+
+
+/* Frame 96 - List of sub-items (e.g., under "Hồ sơ") */
+.sidebar-subitems-list {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px; /* Will apply padding to individual items or left-indent here */
+  gap: 2px;
+  width: 260px;
+  /* height: 72px; */ /* Auto height */
+  flex: none;
+  order: 1; /* After dropdown header */
+  align-self: stretch;
+  flex-grow: 0;
+  padding-left: 16px; /* Indent sub-items as per visual hierarchy */
+}
+
+/* Menu tag - For individual sub-items */
+.sidebar-subitem-tag {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 8px 16px; /* Padding for the clickable area */
+  padding-left: 0; /* Parent has padding-left: 16px */
+  gap: 9px;
+  width: calc(100% - 0px); /* Takes full width of its container minus its own internal padding */
+  min-height: 35px;
+  border-radius: 12px;
+  flex: none;
+  align-self: stretch;
+  flex-grow: 0;
+  text-decoration: none;
+  color: #0F172B;
+  cursor: pointer;
+  overflow: hidden; /* Ensure content doesn't overflow */
+}
+.sidebar-subitem-tag:hover {
+  background: #D4E0FC; /* Slightly different hover */
+}
+.sidebar-subitem-tag.active { /* For active chat item */
+  background: #BCCEFB; /* Example active background */
+  font-weight: 500;
+}
+
+/* Icons/Home (display: none) - Placeholder for icons in sub-items if ever used */
+.sidebar-subitem-icon {
+  display: none; /* As per Figma */
+  width: 24px;
+  height: 24px;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+
+/* Trang chủ - Text for sub-items */
+.sidebar-subitem-text {
+  /* width: 228px; */ /* flex-grow handles this */
+  min-height: 19px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  color: #0F172B;
+  flex: none;
+  order: 1; /* If icon was present */
+  flex-grow: 1;
+  
+  /* Add text truncation with ellipsis */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%; /* Ensure text doesn't exceed container width */
+}
+
+
+/* Frame 94 - Container for all chat history groups */
+.sidebar-chat-history-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 20px; /* Gap between chat groups (Pinned, Hôm qua, etc.) */
+  width: 260px;
+  flex: none;
+  order: 1; /* After "Đoạn chat" dropdown header */
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+/* Frame 20, 21, 22, 23 - Individual chat group (e.g., Pinned, Hôm qua) */
+.sidebar-chat-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 4px; /* Gap between group header and its list of items */
+  width: 260px;
+  flex: none;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+/* Frame 19 - Header for a chat group */
+.sidebar-chat-group-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 16px;
+  gap: 8px;
+  width: 260px;
+  height: 20px; /* Or 17px if text drives height */
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+/* Đã ghim, Hôm qua - Title text for chat group */
+.sidebar-chat-group-title {
+  /* margin: 0 auto; */ /* Removed */
+  /* width: auto; */
+  height: 17px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 17px;
+  color: #0F172B;
+  flex: none;
+  order: 0;
+  flex-grow: 1; /* Allow title to take space */
+}
+
+/* Icons/Pin - Container for pin icon */
+.sidebar-chat-group-icon {
+  /* margin: 0 auto; */ /* Removed */
+  width: 20px;
+  height: 20px;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.sidebar-chat-group-icon img {
+  width: 15px; /* As per Figma 'Vector' inside 'Icons/Pin' */
+  height: 15px;
+  /* background: #0F172B; border: 2px solid #0F172B;
+     Again, assuming this is part of the PNG. */
+}
+
+/* Chat items list within a group uses .sidebar-subitems-list */
+/* Individual chat items use .sidebar-subitem-tag */
+/* Ensure .sidebar-subitems-list used for chat items does not have extra left padding
+   if the design implies they are aligned with the group header's text.
+   The Figma shows chat items (Menu tag) directly under Frame 19 (group header),
+   both having padding: 0px 16px effectively for their text content.
+   So, the .sidebar-subitems-list for chat items might need padding-left: 0;
+   and its child .sidebar-subitem-tag might need its own padding: 8px 16px.
+   Adjusting this:
+*/
+.sidebar-chat-group > .sidebar-subitems-list {
+    padding-left: 0; /* Remove indent for chat items list */
+}
+.sidebar-chat-group > .sidebar-subitems-list > .sidebar-subitem-tag {
+    padding: 8px 16px; /* Restore full padding for chat items */
+    width: 260px; /* Ensure they take full content width */
+}
+
+@keyframes highlight-pulse {
+  0% {
+    background-color: rgba(82, 140, 255, 0.1);
+  }
+  50% {
+    background-color: rgba(82, 140, 255, 0.3);
+  }
+  100% {
+    background-color: rgba(82, 140, 255, 0.1);
+  }
+}
+
+.new-chat-highlight {
+  animation: highlight-pulse 1.5s ease-in-out infinite;
+  border-left: 3px solid #528cff;
+  position: relative;
+  z-index: 1;
+}
+
+.new-chat-highlight::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(82, 140, 255, 0.05);
+  z-index: -1;
+}
+
+/* When both active and new */
+.sidebar-subitem-tag.active.new-chat-highlight {
+  border-left: 3px solid #3470ff;
+  animation: highlight-pulse 1.5s ease-in-out infinite;
+  background-color: rgba(82, 140, 255, 0.15); /* slightly darker base color */
+}

@@ -1,646 +1,1578 @@
-/* General Reset and Body Styles */
-body, html, #root {
-	height: 100%;
-	margin: 0;
-	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-		'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-		sans-serif; /* Standard system fonts */
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-	background-color: #f0f2f5; /* A neutral background */
-	display: flex; /* Use flex to center the container */
-	justify-content: center;
-	align-items: center;
-	padding: 20px; /* Add some padding around the container */
-	box-sizing: border-box;
-}
-
-/* Chatbot Container - Styles moved from inline */
-.chatbot-container {
-	display: flex;
-	width: 90vw; /* Example width, adjust as needed */
-	height: 90vh; /* Example height, adjust as needed */
-	max-width: 1400px; /* Max width based on visual */
-	max-height: 900px; /* Max height based on visual */
-	background-size: cover;
-	background-position: center;
-	border-radius: 34px; /* From Figma node 1:1703 */
-	box-shadow: 0px 119.4px 120.55px -52.3px rgba(1, 13, 32, 0.1); /* From Figma effect_FEXV5T */
-	overflow: hidden; /* Ensure content stays within rounded corners */
-	margin: auto; /* Center the container */
-}
-
-/* AIVA Chatbot Styles */
-.aiva-chatbot-container {
-  display: flex;
-  width: 90vw;
-  height: 90vh;
-  max-width: 1400px;
-  max-height: 900px;
-  background-color: #FAF1E4; /* Từ Figma fill_CJ6OGY */
-  border-radius: 14px;
-  overflow: hidden;
-  box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.08);
-  margin: auto;
-  font-family: 'Plus Jakarta Sans', 'Poppins', sans-serif;
-}
-
-/* Left Sidebar */
-.aiva-sidebar {
-  width: 280px;
-  background-color: #435334; /* Từ Figma fill_RG2JDH */
-  color: white;
-  display: flex;
-  flex-direction: column;
+/* Global/Body Styles - from Home (guest) and general setup */
+body {
+  background: #EDF2FB !important; /* From Home (guest), !important to override if needed */
+  font-family: 'Inter', sans-serif !important; /* Recommended font */
+  margin: 0;
   padding: 0;
-  position: relative;
+  box-sizing: border-box;
 }
 
-.aiva-logo {
-  font-family: 'Poppins', sans-serif;
-  font-weight: 700;
-  font-size: 26px;
-  color: white;
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+/* Error message styling (can be kept or adjusted) */
+.error-message {
+  background-color: #ffebee; 
+  color: #c62828;
+  padding: 10px;
+  border-radius: 8px; /* Updated to match common Figma radius */
+  margin-bottom: 24px; /* Updated to match Figma gap */
   text-align: center;
-  padding: 20px 0;
+  font-size: 16px; 
+  width: 100%; /* Ensure it takes form width */
 }
 
-.aiva-separator {
-  height: 1px;
-  background-color: #39462C; /* Từ Figma stroke_45YJMU */
-  margin: 0 10px;
-}
 
-.aiva-new-chat {
-  padding: 15px;
-}
+/* NEW STYLES FOR LOGIN PAGE BASED ON FIGMA */
 
-.aiva-new-chat-button {
+.login-page-container {
   display: flex;
-  align-items: center;
-  gap: 10px;
-  width: 100%;
-  padding: 12px;
-  background-color: #39462C; /* Từ Figma fill_DWQ478 */
-  color: white;
-  border: none;
-  border-radius: 40px;
-  cursor: pointer;
-  font-family: 'Poppins', sans-serif;
-  font-size: 15px;
-  font-weight: 400;
-  text-align: left;
+  flex-direction: column;
+  align-items: center; 
+  padding-top: 20px; /* Adjusted padding-top */
+  min-height: 100vh; /* Ensure it takes full viewport height */
 }
 
-.aiva-add-icon {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 22px;
-  font-weight: bold;
-  line-height: 1;
-  width: 24px;
+/* Removed .top-bar-container, .logo-text, .nav-links-container, .nav-link, .nav-login-button styles */
+/* These are now handled by TopBar.css */
+
+/* Welcome Heading - Renamed to login-page-title */
+.login-page-title { 
+  font-family: 'Inter', sans-serif;
+  font-weight: 700; /* Matches register-title weight */
+  font-size: 32px; /* Adjusted to be similar to h2 register-title */
+  line-height: 1.3; /* Adjusted for better readability */
+  text-align: center;
+  color: #0F172B;
+  margin-top: 20px; /* Add some margin-top */
+  margin-bottom: 30px; /* Reduced margin-bottom */
+}
+
+/* Login Form Component Styles */
+.login-form-component { 
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch; /* Stretch items like input fields and button to full width */
+  padding: 40px 32px;
+  gap: 24px; 
+  width: 356px; 
+  min-width: 320px; 
+  background: #FFFFFF;
+  border: 1px solid #7C8FBE;
+  border-radius: 32px;
+}
+
+.form-input-field { 
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px; 
+  width: 100%; 
+}
+
+.form-label { 
+  width: 100%;
   height: 24px;
-}
-
-.aiva-chat-history-section {
-  flex-grow: 1;
-  overflow-y: auto;
-  padding: 5px 15px;
-}
-
-.aiva-history-label {
-  font-family: 'Poppins', sans-serif;
-  text-transform: uppercase;
-  font-size: 13px;
-  color: #9EB384; /* Từ Figma fill_KELRBE */
-  margin: 15px 0 8px;
-}
-
-.aiva-chat-history-item {
-  padding: 10px 15px;
-  margin: 5px 0;
-  border-radius: 5px;
-  cursor: pointer;
-  position: relative;
-  font-family: 'Poppins', sans-serif;
-  font-size: 15px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.aiva-chat-history-item.active::before {
-  content: '';
-  position: absolute;
-  left: -15px;
-  top: 0;
-  bottom: 0;
-  width: 3px;
-  background-color: white;
-  border-radius: 0 10px 10px 0;
-}
-
-.aiva-chat-history-item:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-}
-
-.aiva-sidebar-footer {
-  padding: 15px;
-  margin-top: auto;
-}
-
-.aiva-model-selector {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 15px;
-  background-color: white;
-  border: 1px solid #CEDEBD; /* From Figma stroke_LS9I6K */
-  border-radius: 40px;
-  cursor: pointer;
-}
-
-.aiva-model-active {
-  background-color: #CEDEBD; /* From Figma fill_C323ZI */
-  color: #39462C;
-  padding: 15px 30px;
-  border-radius: 40px;
-  font-family: 'Poppins', sans-serif;
-  font-weight: 500;
-  font-size: 13px;
-}
-
-.aiva-model-option {
-  padding: 15px 30px;
-  color: #435334;
-  font-family: 'Poppins', sans-serif;
-  font-weight: 500;
-  font-size: 13px;
-}
-
-.aiva-logout-button {
-  width: 100%;
-  padding: 10px;
-  background-color: rgba(255, 255, 255, 0.1);
-  color: white;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 14px;
-  transition: background-color 0.2s;
-}
-
-.aiva-logout-button:hover {
-  background-color: rgba(255, 255, 255, 0.2);
-}
-
-/* Main Chat Area */
-.aiva-main {
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-  background-color: #FAF1E4; /* From Figma fill_CJ6OGY */
-  overflow: hidden;
-}
-
-.aiva-header {
-  padding: 15px 0;
-  background-color: white;
-  border-bottom: 1px solid #e0e0e0;
-  text-align: center;
-}
-
-.aiva-header-title {
-  font-weight: 600;
-  font-size: 18px;
-  color: #435334;
-}
-
-.aiva-chat-messages {
-  flex-grow: 1;
-  overflow-y: auto;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.aiva-empty-chat {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  text-align: center;
-  padding: 20px;
-}
-
-.aiva-avatar {
-  width: 45px;
-  height: 45px;
-  background-color: #CEDEBD; /* From Figma fill_C323ZI */
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 700;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
   font-size: 20px;
-  color: #39462C;
-  margin-bottom: 15px;
+  line-height: 24px;
+  color: #0F172B;
 }
 
-.aiva-empty-chat h2 {
-  margin: 0;
-  color: #435334;
-  font-size: 24px;
-  font-weight: 600;
-  margin-bottom: 10px;
+.form-input {
+  padding: 12px 16px; 
+  width: 100%; 
+  height: 48px; 
+  background: #FFFFFF;
+  border: 1px solid #D9D9D9;
+  border-radius: 8px;
+  font-family: 'Inter', sans-serif; 
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+  color: #0F172B; 
 }
 
-.aiva-empty-chat p {
-  margin: 0;
-  color: #849771; /* Từ Figma fill_WCKL50 */
-  font-size: 16px;
+/* Hide Edge browser's default password reveal icon */
+.form-input[type="password"]::-ms-reveal {
+  display: none;
+}
+
+/* Hide Webkit-based browser's (like Chrome) potential password reveal icon */
+/* This might not be necessary for all versions/browsers but added for robustness */
+.form-input[type="password"]::-webkit-reveal, /* Older Chrome, Opera, Safari */
+.form-input[type="password"]::-webkit-inner-spin-button, 
+.form-input[type="password"]::-webkit-outer-spin-button {
+  display: none;
+  -webkit-appearance: none;
+  margin: 0; /* Also reset margin if any */
+}
+
+.form-input::placeholder { 
+  color: #B3B3B3; 
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+}
+
+.password-input-wrapper { 
+  display: flex;
+  align-items: center;
+  width: 100%;
+  position: relative; 
+}
+
+.password-input-wrapper .form-input {
+  padding-right: 40px; /* Make space for the toggle button */
+}
+
+.password-toggle-button { 
+  background: none;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  right: 12px; /* Adjusted for potentially better spacing */
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 4px; /* Add some padding to make click area slightly larger and for visual spacing */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;  /* Explicit size for the button container */
+  height: 28px; /* Explicit size for the button container */
+  font-size: 0; /* Prevent accidental text rendering from button's own font-size */
+}
+
+.password-toggle-button svg {
+  width: 20px; /* Control SVG icon size */
+  height: 20px; /* Control SVG icon size */
+  fill: #0F172B; /* Default color for SVGs, ensure consistency */
+}
+
+/* Submit Button */
+.submit-button { 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 12px;
+  gap: 8px;
+  width: 100%; 
+  height: 48px; 
+  background: #1E46A4;
+  border-radius: 8px; 
+  border: none;
+  font-family: 'Inter', sans-serif;
+  font-weight: 700; /* Figma showed 400 but 700 for button text is common */
+  font-size: 20px;
+  line-height: 24px;
+  color: #FFFFFF;
+  cursor: pointer;
+}
+
+.submit-button:hover {
+  background: #15336e;
+}
+
+.submit-button:disabled {
+  background-color: #B3B3B3; 
+  cursor: not-allowed;
+}
+
+/* Text Link styles */
+.form-text-link { 
+  width: 100%; 
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+  color: #0F172B; 
+  text-align: left; /* As per image, not centered */
+}
+
+.form-text-link a { 
+  text-decoration-line: underline;
+  color: #1E46A4; 
+  cursor: pointer;
+}
+
+.form-text-link a:hover {
+  color: #15336e;
+}
+
+.form-text-link a.guest-login-link { 
+  color: #0F172B; 
+}
+
+/* Keep other global styles or styles for other pages below this line */
+
+/* Thêm styles mới cho HomePage */
+.home-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.welcome-content {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.welcome-description {
+  font-size: 20px;
+  line-height: 1.5;
   margin-bottom: 30px;
 }
 
-.aiva-suggestions {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 15px;
-  width: 100%;
-  max-width: 800px;
+.welcome-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
 }
 
-.aiva-suggestion-card {
-  border: 1px solid #BA9359; /* From Figma stroke_RQP1UR */
-  border-radius: 10px;
-  padding: 16px 20px;
-  cursor: pointer;
-  text-align: left;
+/* Button styles (ensure these don't conflict or merge with new button styles) */
+/* General .btn-primary was commented out, specific button styles are above */
+/* .btn-primary, .btn-outline { ... } */ 
+
+.btn-outline {
+  background-color: transparent;
+  border: 2px solid #1e46a4;
+  color: #1e46a4;
+  padding: 10px 30px; /* Adjusted from 12px 32px to be slightly different */
+}
+
+.btn-outline:hover {
+  background-color: #e2eafc;
+  color: #15336e;
+}
+
+/* ========= LOGIN PAGE STYLES (Ensure they are loaded before Register if any overrides) ========= */
+/* ... styles for .login-page-container, .top-bar-container, .welcome-heading, .login-form-component etc. ... */
+
+/* ========= REGISTER PAGE STYLES START ========= */
+
+.register-page-container {
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  align-items: center; 
+  padding-top: 20px; /* Initial padding for absolute top bar */
+  min-height: 100vh; 
+  /* background: #EDF2FB; /* Already on body */
 }
 
-.aiva-suggestion-card strong {
-  color: #435334;
-  font-size: 14px;
-  font-weight: 600;
+/* Removed comment about reusing top bar styles - TopBar component is used now */
+
+.page-main-title.register-title { /* Corresponds to 'Đăng nhập' title style in Figma, but text is 'Tạo tài khoản' */
+  /* width: 359px; /* auto based on text */
+  /* height: 67px; /* Let content define height */
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 55px;
+  line-height: 67px;
+  text-align: center;
+  color: #0F172B;
+  margin-bottom: 40px; /* Gap from Frame 107 */
+   /* Adjust margin-top if top-bar becomes relative (e.g. on mobile) */
 }
 
-.aiva-suggestion-card span {
-  color: #849771; /* From Figma fill_WCKL50 */
-  font-size: 12px;
-}
-
-.aiva-question-card {
-  background-color: #FFEED6; /* From Figma fill_NRPFIL */
-  border: 1px solid #D6BC97; /* From Figma stroke_38AI20 */
-  border-radius: 14px;
-  padding: 20px;
-  align-self: flex-start;
-  max-width: 90%;
-}
-
-.aiva-question-text {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-weight: 600;
-  font-size: 16px;
-  color: #2D2D2D; /* From Figma fill_GZN7AJ */
-}
-
-.aiva-message {
+/* Register Form Step 1 Styles */
+.register-form-step1 { /* Corresponds to 'Form Sign up' */
+  box-sizing: border-box;
   display: flex;
+  flex-direction: column;
+  align-items: stretch; /* Stretch items like input fields and button to full width */
+  padding: 40px 32px;
+  gap: 24px; 
+
+  width: 376px; /* Figma: width: 376px */
+  min-width: 320px; /* Figma: min-width: 320px */
+  /* height: 518px; /* Let content define height */
+  background: #FFFFFF;
+  border: 1px solid #7C8FBE;
+  border-radius: 32px;
+}
+
+.form-legend { /* Corresponds to 'Legend' section in Figma */
+  display: flex;
+  flex-direction: column;
   align-items: flex-start;
-  max-width: 80%;
+  padding: 0px;
+  gap: 4px; /* Gap within legend if there was a subtext */
+  width: 100%; /* align-self: stretch */
+  /* height: 62px; /* Auto */
 }
 
-.aiva-message.user {
-  margin-left: auto;
-  flex-direction: row-reverse;
+.legend-title { /* Corresponds to 'Thông tin cá nhân' text */
+  width: 100%; /* align-self: stretch */
+  height: 36px;
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 36px;
+  color: #0F172B;
 }
 
-.aiva-message.bot {
-  margin-right: auto;
+/* Reusing .form-input-field, .form-label, .form-input from Login page styling for consistency */
+/* Adding .register-field for any specific tweaks if needed */
+.form-input-field.register-field {
+  /* Specific styles for register input fields if different from login */
 }
 
-.aiva-bot-avatar {
-  width: 38px;
-  height: 38px;
-  background-color: #CEDEBD;
-  border-radius: 50%;
+/* Select Field Styles */
+.form-select-field.register-field { /* Corresponds to 'Select Field' */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  width: 100%;
+  /* height: 72px; /* Auto */
+}
+
+.select-wrapper {
+  position: relative; /* For custom arrow */
+  width: 100%;
+}
+
+.form-select { /* Corresponds to 'Select' element */
+  display: block; /* Make it block to take full width */
+  width: 100%;
+  padding: 12px 16px; /* Match input padding, adjust right for arrow */
+  padding-right: 40px; /* Space for the arrow */
+  min-width: 240px;
+  height: 48px; /* Match input height from figma (Input is 48px, Select in figma is 40px, using 48 for consistency for now) */
+  background: #FFFFFF;
+  border: 1px solid #D9D9D9;
+  border-radius: 8px;
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px; /* Should match text */
+  color: #0F172B; /* Text color */
+  appearance: none; /* Remove default system appearance */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  cursor: pointer;
+}
+
+.form-select:disabled {
+  background-color: #f0f0f0;
+  cursor: not-allowed;
+}
+
+.form-select::-ms-expand { /* Hide default arrow on IE */
+  display: none;
+}
+
+/* Custom Arrow for Select */
+.select-wrapper::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 16px; /* Figma: padding 12px, icon 16px. Place it like password toggle */
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 6px solid #0F172B; /* Arrow color from Figma's 'Icon' border */
+  pointer-events: none; /* So it doesn't interfere with select click */
+}
+
+/* Placeholder-like styling for the disabled default option */
+.form-select option[value=""][disabled] {
+  color: #B3B3B3; 
+}
+/* Ensure selected value is not placeholder color */
+.form-select:not([value=""]) {
+  color: #0F172B;
+}
+.form-select[value=""] {
+ color: #B3B3B3;
+}
+
+
+/* Submit Button for Register page - reusing .submit-button and adding specific class */
+.submit-button.register-continue-button {
+  /* width: 312px; /* Figma, but parent is 376px, padding 32, so 312 is correct for content box */
+  /* height: 48px; /* Reused from .submit-button */
+  /* background: #1E46A4; /* Reused */
+  /* border-radius: 8px; /* Reused */
+  /* font-size: 20px; /* Reused */
+  /* color: #FFFFFF; /* Reused */
+  /* text: 'Tiếp tục' */
+}
+
+/* Responsive adjustments for Register Page (add as needed) */
+@media screen and (max-width: 768px) {
+  .register-page-container .top-bar-container {
+    /* Inherits responsive styles from login page if classes are the same */
+  }
+  .page-main-title.register-title {
+    font-size: 40px; /* Match login page responsive title */
+    height: auto;
+    margin-bottom: 30px;
+  }
+  .register-form-step1 {
+    width: calc(100% - 40px); /* Match login page responsive form */
+    padding: 30px 20px;
+  }
+}
+
+
+/* ========= REGISTER PAGE STYLES END ========= */
+
+/* ========= HOME PAGE (GUEST VIEW) STYLES START ========= */
+
+.home-page-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  padding-top: 46px; /* Initial padding for absolute top bar */
+  min-height: 100vh; 
+  /* background: #EDF2FB; /* Already on body */
+}
+
+/* Removed comment about reusing top bar styles - TopBar component is used now */
+
+.home-guest-content-wrapper { 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0px;
+  gap: 40px; /* Figma: Frame 107 gap: 40px */
+  width: auto; /* Allow content to define width, up to a max-width */
+  max-width: 767px; /* Maintain a max-width similar to previous design */
+  /* height: 632px; /* Figma: Frame 107 height. Consider if fixed height + scroll is desired */
+  /* overflow-y: auto; /* Only if fixed height is used */
+  margin-top: 66px; 
+}
+
+/* Chat Interaction Section */
+.chat-interaction-section { /* Corresponds to Frame 28 */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0px;
+  gap: 32px; /* Figma specified */
+  width: 100%; /* Take width of .home-content-wrapper */
+  /* height: 289px; /* Auto */
+}
+
+.chat-main-heading { /* Mình có thể giúp gì cho bạn? */
+  /* width: 767px; /* auto */
+  height: 67px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 55px;
+  line-height: 67px;
+  text-align: center;
+  color: #0F172B;
+}
+
+.prompt-buttons-container { /* Frame 15 */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px;
+  gap: 20px; /* Figma specified */
+  /* width: 346px; /* Auto */
+  /* height: 40px; /* Auto */
+}
+
+.prompt-button { /* Frame 14, 13, 12 */
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 16px; /* Adjusted padding for better look */
+  gap: 8px;
+  min-width: 100px; /* Figma specified width */
+  height: 40px;
+  border: 2px solid #7C8FBE;
+  border-radius: 8px;
+  background-color: #FFFFFF; /* Give it a background */
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+  text-align: center; /* Figma had text-align: right, center is more common */
+  color: #0F172B;
+  cursor: pointer;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+.prompt-button:hover {
+  background-color: #e2eafc;
+  border-color: #5175C9;
+}
+
+.chat-input-area { /* Text input field */
+  display: flex; /* Changed to flex for input + button */
+  flex-direction: row; /* Input and button side-by-side */
+  align-items: center; /* Vertically align items */
+  padding: 16px 24px; /* Adjusted padding */
+  gap: 16px;
+  width: 100%; /* Figma: 760px, use 100% of parent */
+  /* height: 118px; /* Auto height */
+  background: #FFFFFF; /* Changed from #EDF2FB to #FFFFFF for contrast */
+  border: 2px solid #7C8FBE;
+  border-radius: 32px;
+}
+
+.chat-text-input-field {
+  /* width: 268px; /* Figma text width, input should be flexible */
+  flex-grow: 1; /* Allow input to take available space */
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+  color: #0F172B;
+  border: none;
+  outline: none;
+  background-color: transparent;
+}
+
+.chat-text-input-field::placeholder {
+  color: #7C8FBE; /* Softer placeholder color */
+}
+
+.chat-add-button { /* For the plus icon/button */
+  width: 40px; /* Increased size for better click area */
+  height: 40px;
+  border-radius: 50%; /* Make it round */
+  background-color: #1E46A4; /* Button color */
+  border: none; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.chat-add-button:hover {
+  background-color: #15336e;
+}
+
+.plus-icon { /* Vector, styled as plus */
+  width: 20px; /* Size of plus lines */
+  height: 20px;
+  position: relative;
+}
+.plus-icon::before, .plus-icon::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 20px; /* Line length */
+  height: 2.5px; /* Line thickness */
+  background-color: #FFFFFF; /* Icon color */
+  transform: translate(-50%, -50%);
+  border-radius: 2px;
+}
+.plus-icon::after {
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+
+/* Login Prompt Frame */
+.login-prompt-frame { /* Frame 106 */
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 44px;
+  gap: 28px; /* Figma: Frame 106 gap: 28px */
+  width: 670px; /* Consistent with previous implementation, Figma node is hug */
+  max-width: 100%;
+  border: 2px solid #7C8FBE;
+  border-radius: 52px; /* Figma: borderRadius 52px */
+  background-color: #FFFFFF; 
+}
+
+.login-prompt-header { /* Frame 108 */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px;
+  gap: 16px;
+  width: 100%; /* Figma: 582px, make it responsive to frame padding */
+  /* height: 50px; */
+}
+
+.unlock-icon-svg { /* Replaces .unlock-icon-placeholder */
+  width: 30px; /* Figma: Icons/Unlock size */
+  height: 30px;
+  /* SVG fill color is defined within the SVG itself (#0F172B) */
+  /* No need for background-color or border-radius if SVG is styled correctly */
+}
+
+.login-prompt-title { 
+  flex-grow: 1;
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 24px; /* Figma node 331:1350: fontSize 24px */
+  line-height: 1.21; /* auto */
+  color: #0F172B;
+}
+
+.login-prompt-features-list { /* Frame 105 */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 12px;
+  list-style: none; /* Remove default ul styling */
+  width: 100%; /* Figma: 538px, make responsive */
+  /* height: 156px; /* Auto */
+}
+
+.feature-bullet-point { /* Feature bullet point */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px;
+  gap: 12px;
+  width: 100%; /* Auto based on content up to parent width */
+  /* height: 30px; /* Auto */
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+  color: #0F172B;
+}
+
+.custom-checkbox-icon { /* Replaces .checkmark-icon-placeholder */
+  width: 30px; /* Figma: Icons/Checkbox size */
+  height: 30px;
+  position: relative; /* For positioning the tick mark */
+  display: flex; /* To center SVGs if they are smaller */
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0; /* Prevent shrinking */
+}
+
+.checkbox-shape-svg {
+  width: 20px; /* Original SVG width, can be scaled up if needed */
+  height: 20px; /* Original SVG height */
+  /* fill is #0F172B from SVG, Figma shows #1E46A4 as fill for shape */
+  /* To match Figma fill for shape (#1E46A4), you might need to edit SVG or use CSS fill if SVG structure allows */
+}
+
+.checkbox-vector-svg { /* The tick mark */
+  position: absolute;
+  width: 10px; /* Original SVG width */
+  height: 7px;  /* Original SVG height */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* fill is #0F172B from SVG, Figma shows #FFFFFF (white) for vector tick */
+  /* To match Figma fill for vector (#FFFFFF), you might need to edit SVG or use CSS fill */
+}
+
+/* If you want the checkbox shape to be filled with #1E46A4 and vector with #FFFFFF like Figma */
+/* And your SVGs are simple paths, you could try this (might not always work directly on img src SVGs): */
+/* 
+.checkbox-shape-svg {
+  fill: #1E46A4; 
+}
+.checkbox-vector-svg {
+  fill: #FFFFFF; 
+}
+*/
+
+/* Ensure feature-bullet-point aligns icon and text correctly */
+.feature-bullet-point {
+  display: flex;
+  align-items: center; /* Vertically align checkbox and text */
+  gap: 12px; /* Gap between checkbox and text */
+  /* ... other styles ... */
+}
+
+/* Remove old placeholder styles if no longer used anywhere */
+.unlock-icon-placeholder {
+  /* display: none; or remove completely */
+}
+
+.checkmark-icon-placeholder {
+  /* display: none; or remove completely */
+}
+
+.login-prompt-cta-button { 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 12px 32px; /* Figma node I331:1356 padding */
+  gap: 8px;
+  width: 156px; /* Figma node I331:1356 width */
+  height: auto; /* Adjust height based on padding and font */
+  background: #1E46A4;
+  border-radius: 88px;
+  border: none;
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 16px; /* Figma node I331:1356;261:1199 fontSize 16px */
+  line-height: 1.21; /* auto */
+  text-align: center;
+  color: #FFFFFF;
+  text-decoration: none;
+  transition: background-color 0.2s;
+}
+
+.login-prompt-cta-button:hover {
+  background-color: #15336e;
+}
+
+/* Responsive adjustments for Home Page */
+@media screen and (max-width: 768px) {
+  .home-content-wrapper {
+    width: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+    gap: 40px;
+    margin-top: 40px;
+  }
+  .chat-main-heading {
+    font-size: 40px;
+    line-height: 48px;
+    height: auto;
+  }
+  .prompt-buttons-container {
+    flex-wrap: wrap; /* Allow prompts to wrap */
+    justify-content: center;
+  }
+  .prompt-button {
+    font-size: 16px;
+    padding: 6px 12px;
+    height: 36px;
+    min-width: 80px;
+  }
+  .chat-input-area {
+    border-radius: 24px;
+    padding: 12px 16px;
+  }
+  .chat-text-input-field {
+    font-size: 16px;
+  }
+  .chat-add-button {
+    width: 36px;
+    height: 36px;
+  }
+  .plus-icon::before, .plus-icon::after {
+    width: 16px;
+  }
+
+  .login-prompt-frame {
+    padding: 24px;
+    border-radius: 32px;
+  }
+  .login-prompt-header {
+    flex-direction: column;
+    gap: 8px;
+    text-align: center;
+  }
+  .login-prompt-title {
+    font-size: 30px;
+    line-height: 36px;
+  }
+  .feature-bullet-point {
+    font-size: 16px;
+    line-height: 22px;
+    gap: 8px;
+  }
+  .checkmark-icon-placeholder {
+    width: 24px;
+    height: 24px;
+    font-size: 14px;
+  }
+  .login-prompt-cta-button {
+    width: 100%;
+    max-width: 222px; /* Keep max width from design */
+    font-size: 24px;
+    height: 50px;
+  }
+}
+
+/* ========= HOME PAGE (GUEST VIEW) STYLES END ========= */
+
+/* ========= HOME PAGE (REGISTERED USER VIEW) STYLES START ========= */
+
+.home-registered-main-container {
+  display: flex; /* Sidebar and main content side-by-side */
+  position: relative; /* Fallback if absolute children are used */
+  width: 100%; /* Figma: 1440px, make it responsive */
+  min-height: 100vh; /* Figma: 1024px */
+  background: #EDF2FB;
+}
+
+/* Sidebar */
+.home-sidebar {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 20px;
+  gap: 32px; /* Adjusted from 64px in CSS to look more like image */
+  width: 300px; /* Figma specified */
+  min-height: 100vh; /* Match page height */
+  background: #E2EAFC;
+  flex-shrink: 0; /* Prevent sidebar from shrinking */
+}
+
+.sidebar-header-icons { /* Frame 98 */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%; /* Figma: 260px, take full width of sidebar padding box */
+  height: 40px;
+}
+
+.sidebar-icon-button {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  width: 40px; /* Figma icon size */
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.icon-placeholder-sidebar {
+  display: inline-block;
+  background-color: #0F172B; /* Default icon color */
+  /* Placeholder, replace with actual SVG/icon font */
+}
+.icon-placeholder-sidebar.edit-icon {
+  width: 33px; height: 33px; 
+  /* mask-image: url('path/to/edit-icon.svg'); - example */
+}
+.icon-placeholder-sidebar.search-icon {
+  width: 33px; height: 33px;
+}
+.icon-placeholder-sidebar.home-icon-menu {
+  width: 21px; height: 20px; 
+  border: 2px solid #1E46A4; /* From Vector 2 for Home icon */
+  background-color: transparent;
+  border-radius: 1px;
+}
+.icon-placeholder-sidebar.arrow-down-icon {
+  width: 12px; height: 7px; /* Approximate from shape */
+  background-color: #0F172B; /* Shape color */
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+}
+.icon-placeholder-sidebar.pin-icon {
+  width: 18px; height: 18px;
+  /* background: #0F172B; */
+  border: 2px solid #0F172B; /* From Vector for Pin icon */
+  transform: rotate(45deg); /* Simple pin look */
+}
+.icon-placeholder-sidebar.arrow-right-icon {
+  width: 7px; height: 12px; /* Approximate from shape */
+  background-color: #0F172B; /* Shape color */
+  clip-path: polygon(0 0, 100% 50%, 0 100%);
+}
+
+
+.sidebar-menu-item {
   display: flex;
   align-items: center;
-  justify-content: center;
-  font-weight: 700;
-  font-size: 18px;
-  color: #39462C;
-  margin: 0 10px;
-  flex-shrink: 0;
+  padding: 12px 15px;
+  gap: 9px;
+  width: 100%; /* Figma: 260px */
+  height: 48px;
+  border-radius: 12px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+  color: #0F172B;
+  text-decoration: none;
+  box-sizing: border-box;
 }
 
-.aiva-message-content {
-  background-color: #FFEED6; /* From Figma fill_NRPFIL */
-  border-radius: 18px;
-  padding: 15px 20px;
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 1.7;
-  color: #1B2559; /* From Figma fill_CFYP4O */
-  white-space: pre-line;
+.sidebar-menu-item.sidebar-home-link {
+  background: #CCDBFD; /* Active state for Trang chủ */
+}
+.sidebar-menu-item:not(.sidebar-home-link):hover {
+  background: #d5e0f5; /* Hover for other items */
 }
 
-.aiva-message.user .aiva-message-content {
-  background-color: #435334; /* From Figma fill_RG2JDH */
-  color: white;
-  border-bottom-right-radius: 5px;
-}
-
-.aiva-loading {
-  background-color: #FFEED6;
-  border-radius: 18px;
-  padding: 15px 20px;
-  font-style: italic;
-  color: #6E7191;
-}
-
-.aiva-response-actions {
+.sidebar-section {
   display: flex;
-  gap: 15px;
-  flex-wrap: wrap;
-  margin-top: 5px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  width: 100%;
 }
 
-.aiva-action-button {
-  background-color: #435334; /* From Figma fill_RG2JDH */
-  color: white;
-  border: none;
-  border-radius: 45px;
-  padding: 0 30px;
-  height: 54px;
+.sidebar-section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 0px 0px 15px; /* Figma alignment */
+  width: 100%;
+  height: 24px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  color: #0F172B;
   cursor: pointer;
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-weight: 600;
-  font-size: 14px;
+}
+
+.sidebar-section-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  width: 100%;
+  list-style: none;
+  padding-left: 0; /* Remove default ul padding */
+  margin: 0;
+}
+
+.sidebar-section-list .sidebar-menu-item {
+  padding-left: 15px; /* Indent items under section header */
+  /* Specific styling for items in lists, e.g., history items */
+}
+
+.chat-history-group {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  width: 100%;
+  margin-top: 12px; /* Space between groups */
+}
+
+.chat-history-group-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 15px;
+  width: 100%;
+  height: 18px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 18px;
+  color: #0F172B;
+}
+
+/* Main Content Area */
+.home-main-content-area { /* Frame 32 */
+  flex-grow: 1; /* Takes remaining space */
+  /* position: relative; /* Figma has this as absolute, but flow is better */
+  /* width: 1140px; /* Will be auto */
+  min-height: 100vh;
+  padding: 0; /* Figma has left:300, so no padding here initially */
+  display: flex; /* To position top bar and inner wrapper */
+  flex-direction: column;
+}
+
+/* Removed .main-content-top-bar, .logo-text-main, .user-avatar-placeholder styles */
+/* These are now handled by TopBar.css */
+
+.main-content-inner-wrapper { /* Frame 34 */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 48px;
+  width: 1000px; /* Figma specified */
+  max-width: 100%; /* Ensure it doesn't overflow */
+  /* height: 910px; /* Auto */
+  margin: 0 auto; /* Center it */
+  padding: 24px 0; /* top: 115px (figma) - 91px (topbar H) */
+}
+
+/* Chat area in Main Content - can reuse/tweak .chat-interaction-section */
+.chat-interaction-section.main-chat-area {
+  /* Styles from guest view are largely reused */
+  width: 767px; /* Figma specific */
+  max-width: 100%;
+}
+
+/* User Tasks and Pinned Chats Section */
+.user-tasks-pinned-chats-container { /* Frame 33 */
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start; /* Align tops of the two columns */
+  gap: 41px;
+  width: 100%; /* Figma: 1000px */
+  max-width: 1000px; /* Ensure it doesn't overflow */
+  /* height: 573px; /* Auto */
+}
+
+.my-tasks-section, .pinned-chats-section { /* Frame 24, Frame 29 */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 28px;
+  gap: 20px;
+  width: 479px; /* Figma specified */
+  /* height: 573px; /* Auto */
+  background: #E2EAFC;
+  border: 2px solid #7C8FBE;
+  border-radius: 24px;
+  box-sizing: border-box;
+}
+
+.section-title-main {
+  /* width: 423px; /* auto */
+  height: 48px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 48px;
+  color: #0F172B;
+  align-self: stretch; /* Make title take full width of padding box */
+}
+
+.task-tabs-container { /* Frame 27 (tabs) */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px;
+  gap: 21px;
+  /* width: 420px; /* auto */
+  height: 48px;
+}
+
+.task-tab {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 12px 0px;
+  gap: 8px;
+  /* width: auto; /* Based on text */
+  height: 48px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  text-align: center; /* Figma was right, but center more common */
+  color: #7C8FBE; /* Inactive tab color */
+  border: none;
+  background: none;
+  border-bottom: 2px solid #7C8FBE; /* Inactive tab border */
+  cursor: pointer;
+}
+
+.task-tab.active {
+  color: #0F172B;
+  border-bottom: 2px solid #0F172B;
+}
+
+.tasks-list-container, .pinned-chats-list-container { /* Frame 26 (list container) */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 16px;
+  gap: 11px;
+  width: 100%; /* Figma: 423px, take full width of parent padding box */
+  /* height: auto; /* Based on content */
+  background: #EDF2FB;
+  border: 2px solid #7C8FBE;
+  border-radius: 16px;
+  list-style: none; /* Remove default ul styles */
+  margin: 0;
+}
+
+.task-item { /* Frame 75 (task item) */
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  /* gap: 192px; /* space-between handles this */
+  width: 100%; /* Figma: 391px */
+  height: 48px;
+  border: 2px solid #7C8FBE;
+  border-radius: 8px;
+  background-color: #FFFFFF; /* Give items a background */
+}
+
+.task-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.task-checkbox { /* Icons/Checkbox */
+  width: 24px;
+  height: 24px;
+  background-color: #0F172B; /* Shape color */
+  /* Vector 1 (Stroke) if needed as checkmark */
+  border-radius: 4px; /* More checkbox like */
+  display: flex; justify-content: center; align-items: center; color: white;
+  /* Placeholder for checkmark */
+}
+
+.task-name {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+  color: #0F172B;
+}
+
+.task-due-date {
+  display: flex;
+  align-items: center;
+  gap: 4px; /* Space between date and arrow */
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 18px;
+  text-align: right;
+  color: #0F172B;
+}
+
+.pinned-chat-item { /* Chat tag */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  width: 100%; /* Figma: 390px */
+  height: 48px;
+  border-radius: 8px;
+  background-color: #FFFFFF; /* Give items a background */
+  border: 1px solid #dce5f5; /* Softer border for chat items */
+}
+
+.pinned-chat-title {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+  color: #0F172B;
+  flex-grow: 1;
+}
+
+.pinned-chat-date {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 18px;
+  text-align: right;
+  color: #0F172B;
   white-space: nowrap;
 }
 
-.aiva-action-button:hover {
-  background-color: #394628;
+/* Responsive for Registered Home Page */
+@media screen and (max-width: 1200px) {
+  .main-content-inner-wrapper {
+    width: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .user-tasks-pinned-chats-container {
+    flex-direction: column; /* Stack task and pinned chat sections */
+    align-items: center; /* Center them when stacked */
+  }
+  .my-tasks-section, .pinned-chats-section {
+    width: 100%;
+    max-width: 479px; /* Maintain their designed width if possible */
+  }
 }
 
-.aiva-input-area {
-  display: flex;
-  padding: 15px 20px;
-  background-color: white;
-  border-top: 1px solid #e0e0e0;
-  gap: 15px;
+@media screen and (max-width: 768px) {
+  .home-registered-main-container {
+    flex-direction: column; /* Stack sidebar and main content */
+  }
+  .home-sidebar {
+    width: 100%;
+    min-height: auto;
+    height: auto;
+    padding-bottom: 20px; /* Add padding at bottom when stacked */
+    gap: 20px;
+  }
+  .main-content-top-bar {
+    padding: 12px 16px;
+    height: auto;
+  }
+  .logo-text-main {
+    font-size: 20px;
+  }
+  .user-avatar-placeholder {
+    width: 40px;
+    height: 40px;
+  }
+  .main-content-inner-wrapper {
+    gap: 30px;
+    margin-top: 0;
+    padding-top: 20px; /* Adjust spacing when top bar is smaller */
+  }
+  .chat-interaction-section.main-chat-area {
+    /* Responsive styles from guest view should apply if class is reused */
+  }
+  .section-title-main {
+    font-size: 30px;
+    line-height: 36px;
+    height: auto;
+  }
+  .my-tasks-section, .pinned-chats-section {
+    padding: 20px;
+  }
+  .task-tab {
+    font-size: 16px;
+  }
+  .task-name, .pinned-chat-title {
+    font-size: 16px;
+  }
+  .task-due-date, .pinned-chat-date {
+    font-size: 14px;
+  }
 }
 
-.aiva-input-field {
-  flex-grow: 1;
-  height: 50px;
-  background-color: #FFEED6; /* From Figma fill_NRPFIL */
-  border: 1px solid #D6BC97; /* From Figma stroke_38AI20 */
-  border-radius: 5px;
-  padding: 0 15px;
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-weight: 600;
-  font-size: 14px;
-  color: #435334;
+
+/* ========= HOME PAGE (REGISTERED USER VIEW) STYLES END ========= */
+
+/* ... existing LandingPage styles and other styles ... */
+
+/* Form Step Indicator */
+.register-form {
+  position: relative;
+  width: 340px !important;
+  padding: 32px 28px 60px !important; /* Reduced padding from standard 40px 32px */
 }
 
-.aiva-input-field::placeholder {
-  color: #BA9359; /* From Figma fill_7GGI6W */
-}
-
-.aiva-send-button {
-  width: 50px;
-  height: 50px;
-  background-color: #435334;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-}
-
-.aiva-send-button:hover {
-  background-color: #394628;
-}
-
-.aiva-send-button:disabled {
-  background-color: #a5b396;
-  cursor: not-allowed;
-}
-
-/* Sidebar Styles */
-.sidebar {
-  width: 280px; /* Slightly wider sidebar */
-  background-color: rgba(26, 29, 33, 0.9); /* Dark, slightly transparent */
-  backdrop-filter: blur(5px); /* Blur effect for sidebar background */
-  color: #e0e0e0;
+.form-step {
   display: flex;
   flex-direction: column;
-  padding: 20px;
-  box-sizing: border-box;
-  border-right: 1px solid rgba(255, 255, 255, 0.1); /* Lighter border */
-}
-
-.new-chat-button {
-  background-color: #5661F6; /* Button color from Figma */
-  color: white;
-  border: none;
-  padding: 12px 18px; /* Slightly larger padding */
-  border-radius: 8px; /* More rounded corners */
-  cursor: pointer;
-  margin-bottom: 25px;
-  text-align: left;
-  display: flex;
-  align-items: center;
-  gap: 10px; /* Increased gap */
-  font-size: 1rem;
-  font-weight: 500;
-  transition: background-color 0.2s ease; /* Smooth transition */
-}
-
-.new-chat-button:hover {
-  background-color: #454fcc;
-}
-
-.chat-history {
-  flex-grow: 1;
-  overflow-y: auto;
-  margin-bottom: 20px;
-  /* Custom scrollbar (optional) */
-  scrollbar-width: thin;
-  scrollbar-color: #555 #333;
-}
-
-.chat-history::-webkit-scrollbar {
-  width: 6px;
-}
-
-.chat-history::-webkit-scrollbar-track {
-  background: #333;
-}
-
-.chat-history::-webkit-scrollbar-thumb {
-  background-color: #555;
-  border-radius: 3px;
-}
-
-.chat-history p { /* Placeholder style */
-  padding: 8px 12px;
-  margin-bottom: 8px;
-  border-radius: 4px;
-  background-color: rgba(255, 255, 255, 0.05);
-  font-size: 0.9rem;
-}
-
-.sidebar-footer {
-  margin-top: auto;
-  padding-top: 15px;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.logout-button {
+  gap: 20px; /* Reduced from 24px */
   width: 100%;
-  padding: 10px;
-  background-color: transparent; /* Make transparent */
-  color: #ff4d4d; /* Red text color */
-  border: 1px solid #ff4d4d; /* Red border */
-  border-radius: 5px;
+}
+
+.step-indicator {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  position: absolute;
+  bottom: 20px; /* Reduced from 24px */
+  left: 0;
+  right: 0;
+}
+
+.step {
+  width: 8px; /* Reduced from 10px */
+  height: 8px; /* Reduced from 10px */
+  border-radius: 50%;
+  background-color: #D9D9D9;
+}
+
+.step.active {
+  background-color: #1E46A4;
+}
+
+.step.completed {
+  background-color: #7C8FBE;
+}
+
+/* Checkbox styles */
+.form-checkbox-field {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.checkbox-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.form-checkbox {
+  width: 20px;
+  height: 20px;
   cursor: pointer;
-  font-size: 1rem;
-  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-.logout-button:disabled {
-  color: #6c757d;
-  border-color: #6c757d;
+.checkbox-label {
+  font-size: 16px;
+  line-height: 20px;
+  height: auto;
+}
+
+.terms-link {
+  color: #1E46A4;
+  text-decoration: underline;
+}
+
+/* Button group for multiple buttons in a row */
+.button-group {
+  display: flex;
+  gap: 16px;
+  width: 100%;
+}
+
+.secondary-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 12px;
+  gap: 8px;
+  width: 100%;
+  height: 48px;
+  background: #FFFFFF;
+  border: 1px solid #1E46A4;
+  border-radius: 8px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  color: #1E46A4;
+  cursor: pointer;
+}
+
+.secondary-button:hover {
+  background: #EDF2FB;
+}
+
+.secondary-button:disabled {
+  border-color: #B3B3B3;
+  color: #B3B3B3;
   cursor: not-allowed;
-  opacity: 0.6;
 }
 
-.logout-button:hover:not(:disabled) {
-  background-color: rgba(255, 77, 77, 0.1); /* Slight red background on hover */
-  color: #ff6b6b;
+/* Legend styles for form sections */
+.form-legend {
+  margin-bottom: -8px; /* Reduce gap after legend */
 }
 
-/* Main Chat Area Styles */
-.main-chat-area {
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-  background-color: rgba(255, 255, 255, 0.8); /* Slightly transparent white */
-  backdrop-filter: blur(5px); /* Blur effect */
+.legend-title {
+  font-size: 24px;
+  line-height: 29px;
+  font-weight: 700;
+  color: #0F172B;
+  margin-bottom: 0;
 }
 
-.chat-messages {
-  flex-grow: 1;
-  overflow-y: auto;
-  padding: 30px; /* More padding */
-  display: flex;
-  flex-direction: column;
-  gap: 20px; /* Increased space between messages */
+/* Register form specific styles */
+.register-form .legend-title {
+  font-size: 22px; /* Reduced from 24px */
+  line-height: 26px; /* Reduced from 29px */
 }
 
-.empty-chat-placeholder {
+.register-form .form-label {
+  font-size: 18px; /* Reduced from 20px */
+  line-height: 22px; /* Reduced from 24px */
+  height: auto;
+}
+
+.register-form .form-input,
+.register-form .form-select {
+  font-size: 18px; /* Reduced from 20px */
+  line-height: 22px; /* Reduced from 24px */
+  height: 45px; /* Reduced from 48px */
+}
+
+.register-form .form-checkbox {
+  width: 18px; /* Reduced from 20px */
+  height: 18px; /* Reduced from 20px */
+}
+
+.register-form .checkbox-label {
+  font-size: 15px; /* Reduced from 16px */
+  line-height: 18px; /* Reduced from 20px */
+}
+
+.register-form .submit-button,
+.register-form .secondary-button {
+  height: 45px; /* Reduced from 48px */
+  font-size: 18px; /* Reduced from 20px */
+  line-height: 22px; /* Reduced from 24px */
+}
+
+.register-form .form-text-link {
+  font-size: 18px; /* Reduced from 20px */
+  line-height: 22px; /* Reduced from 24px */
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+  .register-form {
+    width: calc(100% - 40px) !important;
+    max-width: 340px;
+  }
+  
+  .button-group {
+    flex-direction: column;
+  }
+}
+
+/* Register wrapper and title */
+.register-wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  height: 100%;
-  color: #666; /* Darker grey */
+}
+
+.register-title {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 38px;
+  line-height: 46px;
+  color: #0F172B;
+  margin-bottom: 30px;
   text-align: center;
 }
 
-.empty-chat-placeholder h2 {
-  margin-bottom: 15px;
-  font-size: 1.8rem; /* Larger heading */
-  font-weight: 300; /* Lighter font weight */
-  color: #444;
-}
-
-.empty-chat-placeholder p {
-  color: #999; /* Lighter placeholder text */
-}
-
-.message {
-  padding: 12px 18px; /* More padding */
-  border-radius: 18px; /* More rounded messages */
-  max-width: 75%;
-  word-wrap: break-word;
-  line-height: 1.5;
-  font-size: 0.95rem;
-}
-
-.message.user {
-  background-color: #5661F6; /* Use button color for user messages */
-  color: white;
-  align-self: flex-end;
-  border-bottom-right-radius: 6px; /* Slightly different corner */
-}
-
-.message.bot {
-  background-color: #e9ecef;
-  color: #343a40;
-  align-self: flex-start;
-  border-bottom-left-radius: 6px; /* Slightly different corner */
-}
-
-.chat-input-area {
+/* Styles for the new chat onboard design (Figma node 411-2396) */
+.new-chat-onboard-layout { /* Was chat-interaction-section for this specific view */
   display: flex;
-  padding: 20px 30px; /* More padding */
-  border-top: 1px solid #e0e0e0; /* Lighter separator */
-  background-color: rgba(248, 249, 250, 0.9); /* Slightly transparent input area */
-  backdrop-filter: blur(3px);
+  flex-direction: column;
+  align-items: center;
+  gap: 32px; /* Figma: gap 32px */
+  padding: 20px; /* Add some padding for overall section */
+  width: 100%; /* Ensure it takes available width in its container */
 }
 
-.chat-input-area input {
-  flex-grow: 1;
-  padding: 12px 20px; /* More padding */
-  border: 1px solid #d0d0d0;
-  border-radius: 25px; /* Fully rounded */
-  margin-right: 15px;
-  font-size: 1rem;
-  background-color: rgba(255, 255, 255, 0.9);
+.onboard-main-heading { /* Was chat-main-heading for this view */
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 30px; /* Figma: 30px */
+  line-height: 1.21;
+  color: #0F172B; /* Figma: #0F172B */
+  text-align: center; /* Figma: textAlignHorizontal: CENTER */
+  margin-bottom: 0; /* Adjusted from original chat-main-heading */
 }
 
-.chat-input-area input:focus {
-  outline: none;
-  border-color: #5661F6;
-  box-shadow: 0 0 0 2px rgba(86, 97, 246, 0.2);
+.onboard-input-container { /* Wrapper for TextInputField in this view */
+  width: 100%; /* Allow TextInputField (max-width 760px) to center itself if needed */
+  display: flex;
+  justify-content: center;
 }
 
-.chat-input-area button {
-  /* padding: 0 15px; /* Remove padding for circular button */
-  background-color: #5661F6;
-  color: white;
-  border: none;
-  border-radius: 50%; /* Make it circular */
+.onboard-prompt-buttons { /* Was prompt-buttons-container for this view */
+  display: flex;
+  flex-direction: row;
+  justify-content: center; /* Center buttons if they don't fill the space */
+  align-items: center;
+  gap: 20px; /* Figma: gap 20px */
+  flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
+}
+
+.onboard-prompt-button { /* Was prompt-button for this view */
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 16px; /* Figma: 16px */
+  color: #0F172B; /* Figma: #0F172B */
+  background-color: #FFFFFF; /* Default white background, similar to Figma */
+  border: 2px solid #7C8FBE; /* Figma: stroke #7C8FBE, 2px */
+  border-radius: 36px; /* Figma: borderRadius 36px */
+  padding: 8px 16px; /* Figma: padding 8px 16px */
   cursor: pointer;
-  width: 48px; /* Fixed size */
-  height: 48px; /* Fixed size */
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background-color 0.2s ease;
+  gap: 8px; /* Figma: gap 8px (though not explicitly for icon here) */
+  transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
-.chat-input-area button:hover {
-  background-color: #454fcc;
+.onboard-prompt-button:hover {
+  background-color: #f0f0f0; /* Slightly darker on hover */
+  border-color: #5c6a8c; /* Darker border on hover */
 }
 
-.chat-input-area button svg {
-  width: 22px; /* Adjust icon size */
-  height: 22px;
+/* Styles for SVG icons in Login Prompt on HomePageGuestView */
+
+.login-prompt-header .login-prompt-title {
+    display: flex; /* Make title and icon align if they were siblings */
+    align-items: center;
+    gap: 16px; /* Match Figma gap between icon and text */
+    /* Note: Current JSX has icon and title as siblings to login-prompt-header, not title as child of icon */
+    /* If icon is meant to be beside the title text, the JSX structure might need adjustment or this style applied to login-prompt-header */
 }
+
+.custom-checkbox-icon { /* Replaces .checkmark-icon-placeholder */
+  width: 30px; /* Figma: Icons/Checkbox size */
+  height: 30px;
+  position: relative; /* For positioning the tick mark */
+  display: flex; /* To center SVGs if they are smaller */
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0; /* Prevent shrinking */
+}
+
+.checkbox-shape-svg {
+  width: 20px; /* Original SVG width, can be scaled up if needed */
+  height: 20px; /* Original SVG height */
+  /* fill is #0F172B from SVG, Figma shows #1E46A4 as fill for shape */
+  /* To match Figma fill for shape (#1E46A4), you might need to edit SVG or use CSS fill if SVG structure allows */
+}
+
+.checkbox-vector-svg { /* The tick mark */
+  position: absolute;
+  width: 10px; /* Original SVG width */
+  height: 7px;  /* Original SVG height */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* fill is #0F172B from SVG, Figma shows #FFFFFF (white) for vector tick */
+  /* To match Figma fill for vector (#FFFFFF), you might need to edit SVG or use CSS fill */
+}
+
+/* If you want the checkbox shape to be filled with #1E46A4 and vector with #FFFFFF like Figma */
+/* And your SVGs are simple paths, you could try this (might not always work directly on img src SVGs): */
+/* 
+.checkbox-shape-svg {
+  fill: #1E46A4; 
+}
+.checkbox-vector-svg {
+  fill: #FFFFFF; 
+}
+*/
+
+/* Ensure feature-bullet-point aligns icon and text correctly */
+.feature-bullet-point {
+  display: flex;
+  align-items: center; /* Vertically align checkbox and text */
+  gap: 12px; /* Gap between checkbox and text */
+  /* ... other styles ... */
+}
+
+/* Add transition styles at the end */
+
+/* Transition animations for homepage to chatbot */
+.transitioning {
+  overflow: hidden; /* Prevent scrolling during transition */
+}
+
+.fade-out {
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+/* Animate the input field to simulate sliding to chatbot position */
+.sliding-input {
+  transform: translateY(50vh);
+  opacity: 0.2;
+  transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out;
+}
+
+/* For smoother page transitions */
+.home-page-container, .home-registered-main-container, .chatbot-container, .chatbot-guest-container {
+  transition: background-color 0.3s ease-in-out;
+}
+
+/* Prevent content jumps during transition */
+.home-guest-content-wrapper, .main-content-inner-wrapper {
+  transition: opacity 0.3s ease-in-out;
+}
+
+/* Ensure sidebar and topbar remain visible during transitions */
+.sidebar-navigation, .topbar-container {
+  transition: opacity 0.2s ease-in-out;
+  z-index: 1000; /* Ensure they stay above transitioning content */
+}
+
+
